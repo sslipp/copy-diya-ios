@@ -3,6 +3,8 @@ import { StyleSheet, Text, View, Image, SafeAreaView, TouchableOpacity, Button, 
 import { LinearGradient } from 'expo-linear-gradient';
 import MarqueeText from 'react-native-marquee';
 import Modal from './Modal';
+import CardFronts from './CardFronts';
+import Swipers from './Swipers';
 
 export default function CardFront() {
 
@@ -22,6 +24,7 @@ export default function CardFront() {
 
     return (
         <View>
+            <Swipers Fam={Fam}/>
             <Modal reFam={reFam} />
         </View >
     );

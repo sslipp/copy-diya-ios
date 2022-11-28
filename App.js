@@ -4,11 +4,10 @@ import CardItemSmall from './component/CardItemSmall';
 import Header from './component/Header';
 import { useFonts } from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
-import Buttons from './component/Buttons';
 import Time from './component/Time';
-import Flip from './component/Flip';
 import Swipers from './component/Swipers';
 import CardFront from './component/CardFront';
+import Modal from './component/Modal';
 
 SplashScreen.preventAutoHideAsync();
 
@@ -17,6 +16,20 @@ export default function App() {
     'ukrainebold': require('./assets/fonts/ukrainebold.otf'),
     'ukraineregular': require('./assets/fonts/ukraineregular.otf'),
   });
+
+  const [Fam, SetFam] = useState('Дія');
+  const [Name, SetName] = useState('Надія');
+  const [Otch, SetOtch] = useState('Володимирівна');
+  const [Date, SetDate] = useState('24.08.1991');
+  const [gender, Setgender] = useState('М');
+
+  const reFam = (Fam, Name, Otch, Date, gender) => {
+    SetFam(Fam),
+      SetName(Name),
+      SetOtch(Otch),
+      SetDate(Date),
+      Setgender(gender)
+  }
 
   const onLayoutRootView = useCallback(async () => {
     if (fontsLoaded) {
@@ -31,11 +44,8 @@ export default function App() {
   return (
     <View style={styles.container} onLayout={onLayoutRootView}>
       <Header />
-      <Swipers />
-      <CardFront />
-      <View style={styles.card2}>
-        <CardItemSmall />
-      </View>
+      <Swipers Fam={Fam} Name={Name} Otch={Otch} Date={Date} gender={gender}/>
+      <Modal reFam={reFam} />
       <Time />
     </View>
   );
