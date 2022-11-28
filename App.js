@@ -7,7 +7,8 @@ import * as SplashScreen from 'expo-splash-screen';
 import Buttons from './component/Buttons';
 import Time from './component/Time';
 import Flip from './component/Flip';
-import Modal from './component/Modal';
+import Swipers from './component/Swipers';
+import CardFront from './component/CardFront';
 
 SplashScreen.preventAutoHideAsync();
 
@@ -30,14 +31,12 @@ export default function App() {
   return (
     <View style={styles.container} onLayout={onLayoutRootView}>
       <Header />
-      <Flip />
+      <Swipers />
+      <CardFront />
       <View style={styles.card2}>
         <CardItemSmall />
       </View>
       <Time />
-      <View>
-        <Buttons />
-      </View>
     </View>
   );
 }

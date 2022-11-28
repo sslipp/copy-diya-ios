@@ -16,9 +16,9 @@ const styles = StyleSheet.create({
     card: {
         backgroundColor: '#fef495',
         width: 230,
-        height: 340,
+        height: 380,
         borderRadius: 10,
         left: 32,
-        top: 105,
+        top: 90,
     }
 });

@@ -2,28 +2,47 @@ import React, { useState } from 'react';
 import { StyleSheet, Text, View, Image, SafeAreaView, TouchableOpacity, Button, Animated, AppRegistry, TextInput } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import MarqueeText from 'react-native-marquee';
-import Modal from './Modal';
 
-export default function CardFront() {
-
-    const [Fam, SetFam] = useState('Дія');
-    const [Name, SetName] = useState('Надія');
-    const [Otch, SetOtch] = useState('Володимирівна');
-    const [Date, SetDate] = useState('24.08.1991');
-    const [gender, Setgender] = useState('М');
-
-    const reFam = (Fam, Name, Otche, Date, gender) => {
-        SetFam(Fam),
-            SetName(Name),
-            SetOtch(Otche),
-            SetDate(Date),
-            Setgender(gender)
-    }
+export default function CardFronts() {
 
     return (
-        <View>
-            <Modal reFam={reFam} />
-        </View >
+            <View>
+                <View style={styles.card} >
+                    <Text></Text>
+                    <View>
+                        <Text style={styles.textDocument}>єДокумент</Text><Text style={styles.kaska}>🪖</Text>
+                    </View>
+                    <View style={styles.textCardData}>
+                        <Text style={styles.textCardDataText}>Дата</Text>
+                        <Text style={styles.textCardDataText}>народження:</Text>
+                        <Text style={styles.textCardDataText}>24.08.1992</Text>
+                    </View>
+                    <Text />
+                    <View style={styles.textCardNumber}>
+                        <Text style={styles.textCardNumberText}>РНОКПП:</Text>
+                        <Text style={styles.textCardNumberText}>123000000001</Text>
+                    </View>
+                    <View>
+                        <Image source={require('./../assets/photo.png')} style={styles.image} />
+                    </View>
+                    <LinearGradient colors={['#FFFFFF00', '#FFFFFF']}></LinearGradient>
+                    <View style={styles.CardLine}>
+                        <LinearGradient start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }} colors={['#668afc', '#a9fce8']}>
+                            <MarqueeText speed={0.1} marqueeOnStart={true} loop={true} delay={500} style={styles.textCardLine}>Документ діє у військовий час. Ой у лузі червона калина похилилася, чогось наша славна Україна зажурилася. А ми тую червону калину підіймемо, а ми нашу славну Україну, гей, гей, розвеселимо.</MarqueeText>
+                        </LinearGradient>
+                    </View>
+                    <View>
+                        <View style={styles.Name}>
+                            <Text style={styles.textName}>Дія</Text>
+                            <Text style={styles.textName}>Надія</Text>
+                            <Text style={styles.textName}>Володимирівна</Text>
+                        </View>
+                    </View>
+                    <View>
+                        <Image style={styles.settings} source={require('./../assets/settings.png')} />
+                    </View>
+                </View>
+            </View>
     );
 }
 

@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
     textPodCard: {
         fontFamily: 'ukraineregular',
         fontSize: 11,
-        top: 25,
+        bottom: 95,
         left: 60,
         position: 'absolute'
     }
