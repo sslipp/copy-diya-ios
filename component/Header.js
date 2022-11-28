@@ -7,6 +7,9 @@ export default function Header() {
             <View>
                 <Image source={require('./../assets/icon.png')} style={styles.image}/>
             </View>
+            <View>
+                <Image source={require('./../assets/qrcode.png')} style={styles.image2}/>
+            </View>
         </View>
     );
 }
@@ -17,5 +20,12 @@ const styles = StyleSheet.create({
         marginLeft: 15,
         width: 50,
         height: 50
+    },
+    image2: {
+        marginTop: -38,
+        marginLeft: 320,
+        width: 42,
+        height: 30,
+        position: 'absolute'
     }
 });

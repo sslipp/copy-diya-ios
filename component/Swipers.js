@@ -1,12 +1,16 @@
 import React, { useState } from 'react'
-import { StyleSheet, Text, View, Image, SafeAreaView, TouchableOpacity, Button, Animated, AppRegistry, TextInput } from 'react-native';
+import { StyleSheet, Text, View, Image, SafeAreaView, TouchableOpacity, Button, Animated, AppRegistry, TextInput, Alert } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import MarqueeText from 'react-native-marquee';
-import Swiper from 'react-native-swiper'
-import CardFront from './CardFronts'
-import CardItemSmall from './CardItemSmall';
+import Swiper from 'react-native-swiper';
+import * as Clipboard from 'expo-clipboard';
 
 export default function Swipers({ Fam, Name, Otch, Date }) {
+
+    const copyText = async () => {
+        Alert.alert('Номер скопійовано');
+        await Clipboard.setStringAsync('1234567890');
+    }
 
     return (
         <Swiper style={styles.wrapper} loop={false} dot={
@@ -102,6 +106,9 @@ export default function Swipers({ Fam, Name, Otch, Date }) {
                     <View style={styles.Name}>
                         <Text style={styles.textName2}>1234567890</Text>
                     </View>
+                    <TouchableOpacity activeOpacity={1} onPress={copyText}>
+                        <Image style={styles.copyText} source={require('./../assets/copyText.png')} />
+                    </TouchableOpacity>
                 </View>
             </View>
         </Swiper>
@@ -109,6 +116,13 @@ export default function Swipers({ Fam, Name, Otch, Date }) {
 }
 
 const styles = StyleSheet.create({
+    copyText: {
+        position: 'absolute',
+        top: 225,
+        left: 200,
+        width: 35,
+        height: 35
+    },
     podatki: {
         fontFamily: 'ukraineregular',
         fontSize: 22,

@@ -39,7 +39,7 @@ export default function Modal({ reFam }) {
                     <Text style={styles.textP}>Послуги</Text>
                 </TouchableOpacity>
                 <TouchableOpacity activeOpacity={1}>
-                    <Image style={styles.message} source={require('./../assets/message.png')} />
+                    <Image style={styles.message} source={require('./../assets/messages.png')} />
                     <Text style={styles.textM}>Повідомлення</Text>
                 </TouchableOpacity>
                 <TouchableOpacity activeOpacity={1}>
@@ -100,9 +100,9 @@ const styles = StyleSheet.create({
     },
     message: {
         left: 220,
-        top: 66,
-        width: 26,
-        height: 26,
+        top: 62,
+        width: 32,
+        height: 32,
         position: 'absolute'
     },
     textM: {
