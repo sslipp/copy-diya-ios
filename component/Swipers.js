@@ -111,11 +111,56 @@ export default function Swipers({ Fam, Name, Otch, Date }) {
                     </TouchableOpacity>
                 </View>
             </View>
+            <View testID="vacina" style={styles.card4} >
+                <Text></Text>
+                <View>
+                    <Text style={styles.textDocument4}>Внутрішній</Text><Text style={styles.textDocument5}>COVID19-сертифікат</Text>
+                </View>
+                <View style={styles.textCardData44}>
+                    <Text style={styles.textCardDataText}>Дата</Text>
+                    <Text style={styles.textCardDataText}>народження:</Text>
+                    <Text style={styles.textCardDataText}>{Date}</Text>
+                </View>
+                <Text />
+                <View style={styles.textCardNumber33}>
+                    <Text style={styles.textCardNumberText}>Дійсний до:</Text>
+                    <Text style={styles.textCardNumberText}>24.06.2023</Text>
+                </View>
+                <View style={styles.textCardNumber22}>
+                    <Text style={styles.textCardNumberText}>Номер</Text>
+                    <Text style={styles.textCardNumberText}>сертифікату:</Text>
+                    <Text style={styles.textCardNumberText}>URN:UVCI:01:UA:0</Text>
+                    <Text style={styles.textCardNumberText}>E556693061955589</Text>
+                    <Text style={styles.textCardNumberText}>E2520C4F3889304</Text>
+                </View>
+                <View>
+                    <Image source={require('./../assets/photo.png')} style={styles.image} />
+                </View>
+                <LinearGradient colors={['#FFFFFF00', '#FFFFFF']}></LinearGradient>
+                <View style={styles.CardLine33}>
+                </View>
+                <View>
+                    <View style={styles.Name}>
+                        <Text style={styles.textName}>{Fam}</Text>
+                        <Text style={styles.textName}>{Name}</Text>
+                        <Text style={styles.textName}>{Otch}</Text>
+                    </View>
+                </View>
+            </View>
         </Swiper>
     )
 }
 
 const styles = StyleSheet.create({
+    CardLine33: {
+        borderBottomColor: '#ceebbf',
+        borderBottomWidth: 2,
+        marginBottom: 20,
+        width: 280,
+        bottom: 55,
+        left: 15,
+        borderRadius: 20
+    },
     copyText: {
         position: 'absolute',
         top: 225,
@@ -177,6 +222,21 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.15,
         shadowRadius: 6.49
     },
+    card4: {
+        backgroundColor: '#e9f5e7',
+        width: 310,
+        height: 440,
+        borderRadius: 10,
+        left: 33,
+        top: 30,
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 10
+        },
+        shadowOpacity: 0.15,
+        shadowRadius: 6.49
+    },
     cardBack: {
         position: 'absolute',
         backgroundColor: '#fef495',
@@ -207,6 +267,20 @@ const styles = StyleSheet.create({
         fontSize: 25,
         fontFamily: 'ukraineregular',
     },
+    textDocument4: {
+        marginTop: 5,
+        marginBottom: 13,
+        marginLeft: 20,
+        fontSize: 20,
+        fontFamily: 'ukraineregular',
+    },
+    textDocument5: {
+        marginTop: -15,
+        marginBottom: 16,
+        marginLeft: 20,
+        fontSize: 20,
+        fontFamily: 'ukraineregular',
+    },
     textCardLine: {
         padding: 15,
         fontFamily: 'ukraineregular',
@@ -233,6 +307,10 @@ const styles = StyleSheet.create({
         top: 10,
         left: 185,
     },
+    textCardData44: {
+        top: 10,
+        left: 183,
+    },
     textCardDataText: {
         fontFamily: 'ukraineregular',
         fontSize: 12
@@ -244,8 +322,17 @@ const styles = StyleSheet.create({
         right: 171
     },
     textCardNumber: {
-        top: 15,
+        top: 8,
         left: 185
+    },
+    textCardNumber33: {
+        top: 8,
+        left: 183
+    },
+    textCardNumber22: {
+        top: 180,
+        left: 183,
+        position: 'absolute'
     },
     textCardNumberText: {
         fontFamily: 'ukraineregular',

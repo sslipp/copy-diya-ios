@@ -1,12 +1,10 @@
 import React, { useCallback, useState } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
-import CardItemSmall from './component/CardItemSmall';
 import Header from './component/Header';
 import { useFonts } from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
 import Time from './component/Time';
 import Swipers from './component/Swipers';
-import CardFront from './component/CardFront';
 import Modal from './component/Modal';
 
 SplashScreen.preventAutoHideAsync();
@@ -42,12 +40,12 @@ export default function App() {
   }
 
   return (
-    <View style={styles.container} onLayout={onLayoutRootView}>
-      <Header />
-      <Swipers Fam={Fam} Name={Name} Otch={Otch} Date={Date} gender={gender}/>
-      <Modal reFam={reFam} />
-      <Time />
-    </View>
+      <View style={styles.container} onLayout={onLayoutRootView}>
+        <Header />
+        <Swipers Fam={Fam} Name={Name} Otch={Otch} Date={Date} gender={gender} />
+        <Modal reFam={reFam} />
+        <Time />
+      </View>
   );
 }
 
