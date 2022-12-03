@@ -1,11 +1,12 @@
 import React, { useState } from 'react'
-import { StyleSheet, Text, View, Image, SafeAreaView, TouchableOpacity, Button, Animated, AppRegistry, TextInput, Alert } from 'react-native';
+import { Vibration, StyleSheet, Text, View, Image, SafeAreaView, TouchableOpacity, Button, Animated, AppRegistry, TextInput, Alert } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import MarqueeText from 'react-native-marquee';
 import Swiper from 'react-native-swiper';
 import * as Clipboard from 'expo-clipboard';
+import { horizontalScale, moderateScale, verticalScale } from './Metrics';
 
-export default function Swipers({ Fam, Name, Otch, Date }) {
+export default function Swipers({ Fam, Name, Otch, Date, image }) {
 
     const copyText = async () => {
         Alert.alert('Номер скопійовано');
@@ -44,7 +45,7 @@ export default function Swipers({ Fam, Name, Otch, Date }) {
             <View testID="Hello" style={styles.card} >
                 <Text></Text>
                 <View>
-                    <Text style={styles.textDocument}>єДокумент</Text><Text style={styles.kaska}>🪖</Text>
+                    <Text style={styles.textDocument}>єДокумент</Text><Text style={styles.kaska}></Text>
                 </View>
                 <View style={styles.textCardData}>
                     <Text style={styles.textCardDataText}>Дата</Text>
@@ -53,27 +54,33 @@ export default function Swipers({ Fam, Name, Otch, Date }) {
                 </View>
                 <Text />
                 <View style={styles.textCardNumber}>
-                    <Text style={styles.textCardNumberText}>РНОКПП:</Text>
-                    <Text style={styles.textCardNumberText}>123000000001</Text>
+                    <Text style={styles.textCardNumberText22}>РНОКПП:</Text>
+                    <Text style={styles.textCardNumberText22}>123000000001</Text>
                 </View>
                 <View>
-                    <Image source={require('./../assets/photo.png')} style={styles.image} />
+                    <View>
+                        {<Image style={styles.image2} /> && <Image source={{ uri: image }} style={styles.image2} />}
+                    </View>
                 </View>
                 <LinearGradient colors={['#FFFFFF00', '#FFFFFF']}></LinearGradient>
                 <View style={styles.CardLine}>
-                    <LinearGradient start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }} colors={['#668afc', '#a9fce8']}>
-                        <MarqueeText speed={0.1} marqueeOnStart={true} loop={true} delay={500} style={styles.textCardLine}>Документ діє у військовий час. Ой у лузі червона калина похилилася, чогось наша славна Україна зажурилася. А ми тую червону калину підіймемо, а ми нашу славну Україну, гей, гей, розвеселимо.</MarqueeText>
+                    <LinearGradient start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }} colors={['#668afc', '#a9fce8']} style={styles.gradient}>
                     </LinearGradient>
+                    <View style={styles.marqText}>
+                        <MarqueeText speed={0.1} marqueeOnStart={true} loop={true} delay={500} style={styles.textCardLine}>Документ діє у військовий час. Ой у лузі червона калина похилилася, чогось наша славна Україна зажурилася. А ми тую червону калину підіймемо, а ми нашу славну Україну, гей, гей, розвеселимо.</MarqueeText>
+                    </View>
                 </View>
                 <View>
-                    <View style={styles.Name}>
+                    <View style={styles.Namesss}>
                         <Text style={styles.textName}>{Fam}</Text>
                         <Text style={styles.textName}>{Name}</Text>
                         <Text style={styles.textName}>{Otch}</Text>
                     </View>
                 </View>
                 <View>
-                    <Image style={styles.settings} source={require('./../assets/settings.png')} />
+                    <Image style={styles.settings} source={{
+                        uri: 'https://i.imgur.com/H5IqEW1.jpg',
+                    }} />
                 </View>
             </View>
             <View testID="Beutiful" style={styles.cardPlatnik}>
@@ -88,26 +95,28 @@ export default function Swipers({ Fam, Name, Otch, Date }) {
                         <Text style={styles.textName3}>{Otch}</Text>
                     </View>
                 </View>
-                <View style={styles.textCardData}>
+                <View style={styles.textCardData333}>
                     <Text style={styles.textCardDataText2}>Дата народження:</Text>
                     <Text style={styles.textCardDataText2}>{Date}</Text>
                 </View>
                 <Text />
-                <View style={styles.textCardNumber}>
+                <View style={styles.textCardNumber333}>
                     <Text style={styles.textCardNumberText2}>РНОКПП</Text>
                 </View>
                 <LinearGradient colors={['#FFFFFF00', '#FFFFFF']}></LinearGradient>
                 <View style={styles.CardLine2}>
-                    <LinearGradient start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }} colors={['#a6eb98', '#91d4c9']}>
-                        <MarqueeText speed={0.2} marqueeOnStart={true} loop={true} delay={500} style={styles.textCardLine2}>Перевірено Державною податковою службою   РНОКПП дійсний.</MarqueeText>
+                    <LinearGradient start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }} colors={['#a6eb98', '#90d2cd']} style={styles.gradient}>
                     </LinearGradient>
+                    <View style={styles.marqText2}>
+                        <MarqueeText speed={0.3} marqueeOnStart={true} delay={500} style={styles.textCardLine}>Перевірено Державною податковою службою  РНОКПП дійсний.</MarqueeText>
+                    </View>
                 </View>
                 <View>
-                    <View style={styles.Name}>
+                    <View style={styles.Namess}>
                         <Text style={styles.textName2}>1234567890</Text>
                     </View>
                     <TouchableOpacity activeOpacity={1} onPress={copyText}>
-                        <Image style={styles.copyText} source={require('./../assets/copyText.png')} />
+                        <Image style={styles.copyText} source={{ uri: 'https://i.imgur.com/DwSw2Cf.jpg' }} />
                     </TouchableOpacity>
                 </View>
             </View>
@@ -134,7 +143,7 @@ export default function Swipers({ Fam, Name, Otch, Date }) {
                     <Text style={styles.textCardNumberText}>E2520C4F3889304</Text>
                 </View>
                 <View>
-                    <Image source={require('./../assets/photo.png')} style={styles.image} />
+                    {<Image style={styles.image} /> && <Image source={{ uri: image }} style={styles.image} />}
                 </View>
                 <LinearGradient colors={['#FFFFFF00', '#FFFFFF']}></LinearGradient>
                 <View style={styles.CardLine33}>
@@ -152,99 +161,97 @@ export default function Swipers({ Fam, Name, Otch, Date }) {
 }
 
 const styles = StyleSheet.create({
+    textCardNumberText22: {
+        fontFamily: 'ukraineregular',
+        fontSize: moderateScale(12)
+    },
     CardLine33: {
         borderBottomColor: '#ceebbf',
         borderBottomWidth: 2,
-        marginBottom: 20,
-        width: 280,
-        bottom: 55,
-        left: 15,
+        width: horizontalScale(300),
+        bottom: verticalScale(55),
+        marginLeft: horizontalScale(15),
         borderRadius: 20
     },
     copyText: {
         position: 'absolute',
-        top: 225,
-        left: 200,
-        width: 35,
-        height: 35
+        top: verticalScale(253),
+        left: horizontalScale(205),
+        width: horizontalScale(33),
+        height: verticalScale(33)
     },
     podatki: {
         fontFamily: 'ukraineregular',
-        fontSize: 22,
-        marginLeft: 10
+        fontSize: moderateScale(22),
+        marginLeft: horizontalScale(10)
     },
     textKarta: {
         fontFamily: 'ukraineregular',
-        fontSize: 22,
-        marginLeft: 10,
-        marginTop: 10
+        fontSize: moderateScale(22),
+        marginLeft: horizontalScale(10),
+        marginTop: verticalScale(10)
     },
     wrapper: {},
     modals: {
         backgroundColor: 'white',
         flex: 1,
     },
-    imageQRCode: {
-        position: 'absolute',
-        width: 300,
-        height: 300,
-        right: 4,
-        top: 80
-    },
     cardPlatnik: {
         backgroundColor: '#efe3ed',
-        width: 310,
-        height: 440,
+        width: horizontalScale(330),
+        height: verticalScale(500),
         borderRadius: 10,
-        left: 33,
-        top: 30,
+        marginLeft: horizontalScale(24),
+        marginTop: verticalScale(50),
         shadowColor: "#000",
         shadowOffset: {
             width: 0,
-            height: 15,
+            height: 10
         },
-        shadowOpacity: 0.10,
+        shadowOpacity: 0.15,
         shadowRadius: 7.49,
-        elevation: 12,
+        elevation: 15,
     },
     card: {
         backgroundColor: '#fef495',
-        width: 310,
-        height: 440,
+        width: horizontalScale(330),
+        height: verticalScale(500),
         borderRadius: 10,
-        left: 33,
-        top: 30,
+        marginLeft: horizontalScale(24),
+        marginTop: verticalScale(50),
         shadowColor: "#000",
         shadowOffset: {
             width: 0,
             height: 10
         },
         shadowOpacity: 0.15,
-        shadowRadius: 6.49
+        shadowRadius: 7.49,
+        elevation: 15,
     },
     card4: {
         backgroundColor: '#e9f5e7',
-        width: 310,
-        height: 440,
+        width: horizontalScale(330),
+        height: verticalScale(500),
         borderRadius: 10,
-        left: 33,
-        top: 30,
+        marginLeft: horizontalScale(24),
+        marginTop: verticalScale(50),
         shadowColor: "#000",
         shadowOffset: {
             width: 0,
             height: 10
         },
         shadowOpacity: 0.15,
-        shadowRadius: 6.49
+        shadowRadius: 7.49,
+        elevation: 15,
     },
     cardBack: {
         position: 'absolute',
         backgroundColor: '#fef495',
-        width: 310,
-        height: 440,
+        width: horizontalScale(310),
+        height: verticalScale(440),
         borderRadius: 10,
-        left: 27,
-        top: 30,
+        left: horizontalScale(27),
+        top: verticalScale(30),
         shadowColor: "#000",
         shadowOffset: {
             width: 0,
@@ -254,145 +261,182 @@ const styles = StyleSheet.create({
         shadowRadius: 6.49
     },
     image: {
-        marginTop: 10,
-        width: 150,
-        height: 200,
-        left: 20,
-        bottom: 90
+        marginTop: verticalScale(-12),
+        marginBottom: verticalScale(10),
+        width: horizontalScale(145),
+        height: verticalScale(220),
+        left: horizontalScale(21),
+        bottom: verticalScale(90),
+        borderColor: '#dbedd3',
+        borderWidth: 2,
+    },
+    image2: {
+        marginTop: verticalScale(-20),
+        marginBottom: verticalScale(10),
+        width: horizontalScale(145),
+        height: verticalScale(220),
+        left: horizontalScale(21),
+        bottom: verticalScale(90),
+        borderColor: '#b1c5e6',
+        borderWidth: 2,
     },
     textDocument: {
-        marginTop: 15,
-        marginBottom: 13,
-        marginLeft: 20,
-        fontSize: 25,
+        marginTop: verticalScale(5),
+        marginBottom: verticalScale(28),
+        marginLeft: horizontalScale(20),
+        fontSize: moderateScale(20),
         fontFamily: 'ukraineregular',
     },
     textDocument4: {
-        marginTop: 5,
-        marginBottom: 13,
-        marginLeft: 20,
-        fontSize: 20,
+        marginTop: verticalScale(5),
+        marginBottom: verticalScale(13),
+        marginLeft: horizontalScale(20),
+        fontSize: moderateScale(20),
         fontFamily: 'ukraineregular',
     },
     textDocument5: {
-        marginTop: -15,
-        marginBottom: 16,
-        marginLeft: 20,
-        fontSize: 20,
+        marginTop: verticalScale(-15),
+        marginBottom: verticalScale(16),
+        marginLeft: horizontalScale(20),
+        fontSize: moderateScale(20),
         fontFamily: 'ukraineregular',
     },
     textCardLine: {
-        padding: 15,
         fontFamily: 'ukraineregular',
-        bottom: 8,
-        fontSize: 12
+        fontSize: moderateScale(12),
+        top: verticalScale(-3)
+    },
+    gradient: {
+        padding: verticalScale(18)
     },
     CardLine: {
-        width: 310,
-        height: 25,
-        bottom: 70
+        width: horizontalScale(330),
+        height: verticalScale(25),
+        bottom: verticalScale(60),
     },
     textCardLine2: {
-        padding: 15,
         fontFamily: 'ukraineregular',
-        bottom: 8,
-        fontSize: 12
+        fontSize: moderateScale(12)
+    },
+    gradient2: {
+        padding: verticalScale(15)
     },
     CardLine2: {
-        width: 310,
-        height: 25,
-        top: 170
+        width: horizontalScale(330),
+        height: verticalScale(25),
+        marginTop: verticalScale(360),
+        position: 'absolute'
     },
     textCardData: {
-        top: 10,
-        left: 185,
+        top: verticalScale(-5),
+        left: horizontalScale(180),
+    },
+    textCardData333: {
+        top: verticalScale(20),
+        left: horizontalScale(185),
     },
     textCardData44: {
-        top: 10,
-        left: 183,
+        top: verticalScale(5),
+        left: horizontalScale(183),
     },
     textCardDataText: {
         fontFamily: 'ukraineregular',
-        fontSize: 12
+        fontSize: moderateScale(12)
     },
     textCardDataText2: {
         fontFamily: 'ukraineregular',
-        fontSize: 12,
-        top: 100,
-        right: 171
+        fontSize: moderateScale(12),
+        top: verticalScale(100),
+        right: horizontalScale(171)
+    },
+    marqText: {
+        bottom: verticalScale(24)
+    },
+    marqText2: {
+        bottom: verticalScale(24)
     },
     textCardNumber: {
-        top: 8,
-        left: 185
+        top: verticalScale(-15),
+        marginLeft: horizontalScale(180)
+    },
+    textCardNumber333: {
+        top: verticalScale(5),
+        left: horizontalScale(185),
     },
     textCardNumber33: {
-        top: 8,
-        left: 183
+        bottom: verticalScale(10),
+        left: horizontalScale(183)
     },
     textCardNumber22: {
-        top: 180,
-        left: 183,
+        top: verticalScale(225),
+        left: horizontalScale(183),
         position: 'absolute'
     },
     textCardNumberText: {
         fontFamily: 'ukraineregular',
-        fontSize: 12
+        fontSize: moderateScale(12)
     },
     textCardNumberText2: {
         fontFamily: 'ukraineregular',
-        fontSize: 13,
-        right: 173,
-        bottom: 50
+        fontSize: moderateScale(13),
+        right: horizontalScale(173),
+        bottom: verticalScale(85)
     },
     Name: {
-        marginTop: -55
+        marginTop: verticalScale(-35),
+    },
+    Namesss: {
+        marginTop: verticalScale(-35),
+    },
+    Namess: {
+        marginTop: verticalScale(-25)
     },
     textName: {
-        marginTop: -3,
-        top: 5,
-        marginLeft: 20,
-        fontSize: 20,
+        marginTop: verticalScale(-3),
+        top: verticalScale(5),
+        marginLeft: horizontalScale(20),
+        fontSize: moderateScale(20),
         fontFamily: 'ukraineregular',
     },
     textName2: {
-        marginTop: -5,
-        top: 260,
-        marginLeft: 15,
-        fontSize: 30,
+        top: verticalScale(290),
+        marginTop: -30,
+        marginLeft: horizontalScale(15),
+        fontSize: moderateScale(30),
         fontFamily: 'ukraineregular',
     },
     textName3: {
         padding: 1,
-        marginTop: -5,
-        top: 100,
-        marginLeft: 12,
-        fontSize: 17,
+        marginTop: verticalScale(-5),
+        top: verticalScale(100),
+        marginLeft: horizontalScale(12),
+        fontSize: moderateScale(16),
         fontFamily: 'ukraineregular',
     },
     kaska: {
-        fontSize: 33,
+        fontSize: moderateScale(33),
         position: 'absolute',
-        left: 180,
-        top: 3
+        left: horizontalScale(180),
+        top: verticalScale(3)
     },
     titleModal: {
         textAlign: 'center',
-        fontSize: 25,
-        paddingTop: 30,
+        fontSize: moderateScale(25),
+        paddingTop: verticalScale(30),
         fontFamily: 'ukraineregular'
     },
     settings: {
-        width: 45,
-        height: 45,
+        width: horizontalScale(45),
+        height: verticalScale(45),
         position: 'absolute',
-        left: 255,
+        left: horizontalScale(275),
         top: -35
     },
     textN: {
         fontFamily: 'ukraineregular',
-        top: 103,
-        fontSize: 10,
-        left: 310
+        top: verticalScale(103),
+        fontSize: moderateScale(10),
+        left: horizontalScale(310)
     },
     slide1: {
         flex: 1,
@@ -408,7 +452,7 @@ const styles = StyleSheet.create({
     },
     text: {
         color: '#fff',
-        fontSize: 30,
+        fontSize: moderateScale(30),
         fontWeight: 'bold'
     }
 })

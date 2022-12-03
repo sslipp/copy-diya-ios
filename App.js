@@ -1,11 +1,12 @@
 import React, { useCallback, useState } from 'react';
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import { ImageBackground, StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import Header from './component/Header';
 import { useFonts } from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
 import Time from './component/Time';
 import Swipers from './component/Swipers';
 import Modal from './component/Modal';
+import * as ImagePicker from 'expo-image-picker';
 
 SplashScreen.preventAutoHideAsync();
 
@@ -29,6 +30,21 @@ export default function App() {
       Setgender(gender)
   }
 
+  const [image, setImage] = useState(null);
+
+  const pickImage = async () => {
+    let result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.All,
+      allowsEditing: true,
+      aspect: [4, 3],
+      quality: 1,
+    });
+
+    if (!result.canceled) {
+      setImage(result.assets[0].uri);
+    }
+  };
+
   const onLayoutRootView = useCallback(async () => {
     if (fontsLoaded) {
       await SplashScreen.hideAsync();
@@ -40,23 +56,21 @@ export default function App() {
   }
 
   return (
-      <View style={styles.container} onLayout={onLayoutRootView}>
+    <View style={styles.container} onLayout={onLayoutRootView}>
+      <ImageBackground
+        style={{ flex: 1 }}
+        source={{ uri: 'https://i.imgur.com/9RJ6a7N.png', }}>
         <Header />
-        <Swipers Fam={Fam} Name={Name} Otch={Otch} Date={Date} gender={gender} />
-        <Modal reFam={reFam} />
+        <Swipers Fam={Fam} Name={Name} Otch={Otch} Date={Date} gender={gender} image={image} pickImage={pickImage}/>
+        <Modal reFam={reFam} pickImage={pickImage} image={image}/>
         <Time />
-      </View>
+      </ImageBackground >
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#97bdee',
-  },
-  card2: {
-    position: 'absolute',
-    top: 55,
-    left: 320,
   },
 });

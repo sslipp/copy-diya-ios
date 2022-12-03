@@ -1,14 +1,15 @@
 {
   "expo": {
     "name": "Дія",
-    "slug": "Дія",
-    "version": "1.0.0",
+    "slug": "diia",
+    "version": "1.0.2",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/splash.png",
-      "resizeMode": "contain"
+      "image": "./assets/splashs.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#fff"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
@@ -21,12 +22,17 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#FFFFFF"
-      }
+        "foregroundImage": "./assets/adaptive-icon.png"
+      },
+      "package": "com.twinty.diia"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "ec695d77-b3d8-4d44-9a85-809a0c87c9f3"
+      }
     }
   }
 }

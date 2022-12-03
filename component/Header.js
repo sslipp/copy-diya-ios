@@ -1,5 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View, Image } from 'react-native';
+import { horizontalScale, moderateScale, verticalScale } from './Metrics';
 
 export default function Header() {
     return (
@@ -16,14 +17,14 @@ export default function Header() {
 
 const styles = StyleSheet.create({
     image: {
-        marginTop: 30,
-        marginLeft: 15,
+        marginTop: verticalScale(50),
+        marginLeft: horizontalScale(25),
         width: 50,
-        height: 50
+        height: 50,
     },
     image2: {
-        marginTop: -38,
-        marginLeft: 320,
+        marginTop: -40,
+        marginLeft: horizontalScale(327),
         width: 42,
         height: 30,
         position: 'absolute'
