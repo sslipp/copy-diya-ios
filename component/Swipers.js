@@ -45,7 +45,7 @@ export default function Swipers({ Fam, Name, Otch, Date, image }) {
             <View testID="Hello" style={styles.card} >
                 <Text></Text>
                 <View>
-                    <Text style={styles.textDocument}>єДокумент</Text><Text style={styles.kaska}></Text>
+                    <Text style={styles.textDocument}>єДокумент</Text><Text style={styles.kaska}>🪖</Text>
                 </View>
                 <View style={styles.textCardData}>
                     <Text style={styles.textCardDataText}>Дата</Text>
@@ -414,9 +414,9 @@ const styles = StyleSheet.create({
         fontFamily: 'ukraineregular',
     },
     kaska: {
-        fontSize: moderateScale(33),
+        fontSize: moderateScale(28),
         position: 'absolute',
-        left: horizontalScale(180),
+        left: horizontalScale(150),
         top: verticalScale(3)
     },
     titleModal: {
