@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
         fontFamily: 'ukraineregular',
         fontSize: 11,
         bottom: 95,
-        left: 65,
+        left: 70,
         position: 'absolute'
     }
 });

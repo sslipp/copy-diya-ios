@@ -7,6 +7,7 @@ import Time from './component/Time';
 import Swipers from './component/Swipers';
 import Modal from './component/Modal';
 import * as ImagePicker from 'expo-image-picker';
+import Slide from './component/Slide';
 
 SplashScreen.preventAutoHideAsync();
 
@@ -61,8 +62,9 @@ export default function App() {
         style={{ flex: 1 }}
         source={{ uri: 'https://i.imgur.com/9RJ6a7N.png', }}>
         <Header />
-        <Swipers Fam={Fam} Name={Name} Otch={Otch} Date={Date} gender={gender} image={image} pickImage={pickImage}/>
-        <Modal reFam={reFam} pickImage={pickImage} image={image}/>
+        <Slide Fam={Fam} Name={Name} Otch={Otch} Date={Date} gender={gender} image={image} pickImage={pickImage} />
+        {/* <Swipers Fam={Fam} Name={Name} Otch={Otch} Date={Date} gender={gender} image={image} pickImage={pickImage} /> */}
+        <Modal reFam={reFam} pickImage={pickImage} image={image} />
         <Time />
       </ImageBackground >
     </View>
@@ -72,5 +74,6 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: '#97bdee'
   },
 });

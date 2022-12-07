@@ -6,49 +6,50 @@ import Swiper from 'react-native-swiper';
 import * as Clipboard from 'expo-clipboard';
 import { horizontalScale, moderateScale, verticalScale } from './Metrics';
 
-export default function Swipers({ Fam, Name, Otch, Date, image }) {
+export default function Swipers2({ Fam, Name, Otch, Date, image }) {
+
+    const copyText = async () => {
+        Alert.alert('Номер скопійовано');
+        await Clipboard.setStringAsync('1234567890');
+    }
 
     return (
         <View>
-            <View testID="Hello" style={styles.card} >
+            <View testID="Beutiful" style={styles.cardPlatnik}>
                 <Text></Text>
                 <View>
-                    <Text style={styles.textDocument}>єДокумент</Text><Text style={styles.kaska}>🪖</Text>
+                    <Text style={styles.textKarta}>Карта платника</Text><Text style={styles.podatki}>податків</Text>
                 </View>
-                <View style={styles.textCardData}>
-                    <Text style={styles.textCardDataText}>Дата</Text>
-                    <Text style={styles.textCardDataText}>народження:</Text>
-                    <Text style={styles.textCardDataText}>{Date}</Text>
+                <View>
+                    <View style={styles.Name}>
+                        <Text style={styles.textName3}>{Fam}</Text>
+                        <Text style={styles.textName3}>{Name}</Text>
+                        <Text style={styles.textName3}>{Otch}</Text>
+                    </View>
+                </View>
+                <View style={styles.textCardData333}>
+                    <Text style={styles.textCardDataText2}>Дата народження:</Text>
+                    <Text style={styles.textCardDataText2}>{Date}</Text>
                 </View>
                 <Text />
-                <View style={styles.textCardNumber}>
-                    <Text style={styles.textCardNumberText22}>РНОКПП:</Text>
-                    <Text style={styles.textCardNumberText22}>123000000001</Text>
-                </View>
-                <View>
-                    <View>
-                        {<Image style={styles.image2} /> && <Image source={{ uri: image }} style={styles.image2} />}
-                    </View>
+                <View style={styles.textCardNumber333}>
+                    <Text style={styles.textCardNumberText2}>РНОКПП</Text>
                 </View>
                 <LinearGradient colors={['#FFFFFF00', '#FFFFFF']}></LinearGradient>
-                <View style={styles.CardLine}>
-                    <LinearGradient start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }} colors={['#668afc', '#a9fce8']} style={styles.gradient}>
+                <View style={styles.CardLine2}>
+                    <LinearGradient start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }} colors={['#a6eb98', '#90d2cd']} style={styles.gradient}>
                     </LinearGradient>
-                    <View style={styles.marqText}>
-                        <MarqueeText speed={0.1} marqueeOnStart={true} loop={true} delay={500} style={styles.textCardLine}>Документ діє у військовий час. Ой у лузі червона калина похилилася, чогось наша славна Україна зажурилася. А ми тую червону калину підіймемо, а ми нашу славну Україну, гей, гей, розвеселимо.</MarqueeText>
+                    <View style={styles.marqText2}>
+                        <MarqueeText speed={0.3} marqueeOnStart={true} delay={500} style={styles.textCardLine}>Перевірено Державною податковою службою  РНОКПП дійсний.</MarqueeText>
                     </View>
                 </View>
                 <View>
-                    <View style={styles.Namesss}>
-                        <Text style={styles.textName}>{Fam}</Text>
-                        <Text style={styles.textName}>{Name}</Text>
-                        <Text style={styles.textName}>{Otch}</Text>
+                    <View style={styles.Namess}>
+                        <Text style={styles.textName2}>1234567890</Text>
                     </View>
-                </View>
-                <View>
-                    <Image style={styles.settings} source={{
-                        uri: 'https://i.imgur.com/H5IqEW1.jpg',
-                    }} />
+                    <TouchableOpacity activeOpacity={1} onPress={copyText}>
+                        <Image style={styles.copyText} source={{ uri: 'https://i.imgur.com/DwSw2Cf.jpg' }} />
+                    </TouchableOpacity>
                 </View>
             </View>
         </View>
@@ -93,10 +94,10 @@ const styles = StyleSheet.create({
     },
     cardPlatnik: {
         backgroundColor: '#efe3ed',
-        width: horizontalScale(330),
+        width: horizontalScale(310),
         height: verticalScale(500),
         borderRadius: 10,
-        marginLeft: horizontalScale(24),
+        marginLeft: horizontalScale(5),
         marginTop: verticalScale(50),
         shadowColor: "#000",
         shadowOffset: {
@@ -109,10 +110,10 @@ const styles = StyleSheet.create({
     },
     card: {
         backgroundColor: '#fef495',
-        width: horizontalScale(310),
+        width: horizontalScale(330),
         height: verticalScale(500),
         borderRadius: 10,
-        marginLeft: horizontalScale(0),
+        marginLeft: horizontalScale(24),
         marginTop: verticalScale(50),
         shadowColor: "#000",
         shadowOffset: {
@@ -205,7 +206,7 @@ const styles = StyleSheet.create({
         padding: verticalScale(18)
     },
     CardLine: {
-        width: horizontalScale(310),
+        width: horizontalScale(330),
         height: verticalScale(25),
         bottom: verticalScale(60),
     },
@@ -217,14 +218,14 @@ const styles = StyleSheet.create({
         padding: verticalScale(15)
     },
     CardLine2: {
-        width: horizontalScale(330),
+        width: horizontalScale(310),
         height: verticalScale(25),
         marginTop: verticalScale(360),
         position: 'absolute'
     },
     textCardData: {
         top: verticalScale(-5),
-        left: horizontalScale(177),
+        left: horizontalScale(180),
     },
     textCardData333: {
         top: verticalScale(20),
@@ -251,8 +252,8 @@ const styles = StyleSheet.create({
         bottom: verticalScale(24)
     },
     textCardNumber: {
-        top: verticalScale(-8),
-        marginLeft: horizontalScale(177)
+        top: verticalScale(-15),
+        marginLeft: horizontalScale(180)
     },
     textCardNumber333: {
         top: verticalScale(5),
@@ -324,7 +325,7 @@ const styles = StyleSheet.create({
         width: horizontalScale(45),
         height: verticalScale(45),
         position: 'absolute',
-        left: horizontalScale(257),
+        left: horizontalScale(275),
         top: -35
     },
     textN: {
