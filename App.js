@@ -4,10 +4,10 @@ import Header from './component/Header';
 import { useFonts } from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
 import Time from './component/Time';
-import Swipers from './component/Swipers';
 import Modal from './component/Modal';
 import * as ImagePicker from 'expo-image-picker';
 import Slide from './component/Slide';
+import AnimatedSplash from "react-native-animated-splash-screen";
 
 SplashScreen.preventAutoHideAsync();
 
@@ -32,6 +32,11 @@ export default function App() {
   }
 
   const [image, setImage] = useState(null);
+  const [loading, setLoading] = useState(false);
+
+  setTimeout(() => {
+    setLoading(true);
+  }, 3000);
 
   const pickImage = async () => {
     let result = await ImagePicker.launchImageLibraryAsync({
@@ -57,17 +62,25 @@ export default function App() {
   }
 
   return (
-    <View style={styles.container} onLayout={onLayoutRootView}>
-      <ImageBackground
-        style={{ flex: 1 }}
-        source={{ uri: 'https://i.imgur.com/9RJ6a7N.png', }}>
-        <Header />
-        <Slide Fam={Fam} Name={Name} Otch={Otch} Date={Date} gender={gender} image={image} pickImage={pickImage} />
-        {/* <Swipers Fam={Fam} Name={Name} Otch={Otch} Date={Date} gender={gender} image={image} pickImage={pickImage} /> */}
-        <Modal reFam={reFam} pickImage={pickImage} image={image} />
-        <Time />
-      </ImageBackground >
-    </View>
+    <AnimatedSplash
+      translucent={true}
+      isLoaded={loading}
+      logoImage={require("./assets/icon.png")}
+      backgroundColor={"#fff"}
+      logoHeight={150}
+      logoWidth={150}
+    >
+      <View style={styles.container} onLayout={onLayoutRootView}>
+        <ImageBackground
+          style={{ flex: 1 }}
+          source={{ uri: 'https://i.imgur.com/9RJ6a7N.png', }}>
+          <Header />
+          <Slide Fam={Fam} Name={Name} Otch={Otch} Date={Date} gender={gender} image={image} pickImage={pickImage} />
+          <Modal reFam={reFam} pickImage={pickImage} image={image} />
+          <Time />
+        </ImageBackground >
+      </View>
+    </AnimatedSplash>
   );
 }
 
