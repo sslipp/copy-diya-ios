@@ -30,8 +30,15 @@ export default class Slide extends Component {
                         <Swipers3 Fam={this.props.Fam} Name={this.props.Name} Otch={this.props.Otch} Date={this.props.Date} gender={this.props.gender} image={this.props.image} pickImage={this.props.pickImage} />
                     </View>
                 </CarouselPager>
-                <Dots length={3} active={this.state.active} activeColor='#0A0603' passiveColor='#7E8A81' passiveDotWidth={8} passiveDotHeight={8} activeDotHeight={10} activeDotWidth={10} />
+                <Dots length={3} active={this.state.active} paddingVertical={24.5} activeColor='#0A0603' passiveColor='#7E8A81' passiveDotWidth={5} passiveDotHeight={5} activeDotHeight={7} activeDotWidth={7} />
             </View>
         );
     }
 }
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        backgroundColor: '#97bdee'
+    },
+});
