@@ -6,6 +6,7 @@ import LoginScreen from './screens/LoginScreen';
 import HomeScreen from './screens/HomeScreen';
 import QrCode from './screens/QrCode';
 import Message from './screens/Message';
+import Messages from './screens/Messages';
 
 const Stack = createNativeStackNavigator();
 
@@ -31,6 +32,11 @@ export default function App() {
         <Stack.Screen
           name="Message"
           component={Message}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="Messages"
+          component={Messages}
           options={{ headerShown: false }}
         />
       </Stack.Navigator>

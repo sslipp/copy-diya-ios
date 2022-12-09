@@ -19,11 +19,11 @@ export default function ButtonsMessage() {
                     <Text style={styles.textP}>Послуги</Text>
                 </TouchableOpacity>
                 <TouchableOpacity activeOpacity={1}>
-                    <Image style={styles.message} source={require('./../assets/messages.png')} />
+                    <Image style={styles.message} source={require('./../assets/messageu.png')} />
                     <Text style={styles.textM}>Повідомлення</Text>
                 </TouchableOpacity>
                 <TouchableOpacity activeOpacity={1} onPress={repl2}>
-                    <Image style={styles.settings} source={require('./../assets/document.png')} />
+                    <Image style={styles.settings} source={require('./../assets/documents.png')} />
                     <Text style={styles.textD}>Документи</Text>
                 </TouchableOpacity>
                 <TouchableOpacity activeOpacity={1}>
@@ -87,7 +87,7 @@ const styles = StyleSheet.create({
     settings: {
         width: horizontalScale(36),
         height: 33,
-        top: 40,
+        top: 42,
         left: horizontalScale(30),
         position: 'absolute'
     },
@@ -111,10 +111,10 @@ const styles = StyleSheet.create({
         left: horizontalScale(114)
     },
     message: {
-        left: horizontalScale(220),
-        top: 58,
-        width: 33,
-        height: 32,
+        left: horizontalScale(219),
+        top: 56,
+        width: 34,
+        height: 33,
         position: 'absolute'
     },
     textM: {
