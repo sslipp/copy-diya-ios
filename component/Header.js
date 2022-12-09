@@ -1,16 +1,24 @@
 import React from 'react';
-import { StyleSheet, Text, View, Image } from 'react-native';
+import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
 import { horizontalScale, moderateScale, verticalScale } from './Metrics';
+import { useNavigation } from '@react-navigation/core';
 
 export default function Header() {
+
+    const navigation = useNavigation()
+
+    const repl = () => {
+        navigation.replace("Code")
+    }
+
     return (
         <View>
             <View>
-                <Image source={require('./../assets/icon.png')} style={styles.image}/>
+                <Image source={require('./../assets/icon.png')} style={styles.image} />
             </View>
-            <View>
-                <Image source={require('./../assets/qrcode.png')} style={styles.image2}/>
-            </View>
+            <TouchableOpacity activeOpacity={1} onPress={repl}>
+                <Image source={require('./../assets/qrcode.png')} style={styles.image2} />
+            </TouchableOpacity>
         </View>
     );
 }
