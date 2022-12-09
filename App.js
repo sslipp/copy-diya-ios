@@ -5,6 +5,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import LoginScreen from './screens/LoginScreen';
 import HomeScreen from './screens/HomeScreen';
 import QrCode from './screens/QrCode';
+import Message from './screens/Message';
 
 const Stack = createNativeStackNavigator();
 
@@ -25,6 +26,11 @@ export default function App() {
         <Stack.Screen
           name="Code"
           component={QrCode}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="Message"
+          component={Message}
           options={{ headerShown: false }}
         />
       </Stack.Navigator>
