@@ -58,6 +58,7 @@ export default function QrCode() {
         onBarCodeScanned={scanned ? undefined : handleBarCodeScanned}
         style={StyleSheet.absoluteFillObject}
       />
+      <Image style={styles.imageScan} source={require('../assets/scan.png')} />
       <TouchableOpacity activeOpacity={1} onPress={repl}>
         <Image style={styles.imageStrelka} source={require('../assets/strelka.png')} />
       </TouchableOpacity>
@@ -65,7 +66,6 @@ export default function QrCode() {
       <View>
         <Text style={styles.textQrCodeTwo}>Наведіть на рамку на QR-код, який хочете відсканувати.</Text>
       </View>
-      <Image style={styles.imageScan} source={require('../assets/scan.png')} />
     </View>
   );
 }
@@ -96,7 +96,7 @@ const styles = StyleSheet.create({
   },
   imageScan: {
     width: 300,
-    height: 300,
+    height: 400,
     marginLeft: 40,
     position: 'absolute',
   },
