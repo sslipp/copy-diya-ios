@@ -4,11 +4,11 @@ import { LinearGradient } from 'expo-linear-gradient';
 import MarqueeText from 'react-native-marquee';
 import { horizontalScale, moderateScale, verticalScale } from './Metrics';
 
-export default function Swipers({ Fam, Name, Otch, Date, image, SetBgCol }) {
+export default function Swipers({ Fam, Name, Otch, Date, image, bgCol2 }) {
 
     return (
         <View>
-            <View testID="Hello" style={styles.card} >
+            <View testID="Hello" style={[styles.card, { backgroundColor: bgCol2 }]} >
                 <Text></Text>
                 <View>
                     <Text style={styles.textDocument}>єДокумент</Text><Text style={styles.kaska}>🪖</Text>
@@ -106,7 +106,6 @@ const styles = StyleSheet.create({
         elevation: 15,
     },
     card: {
-        backgroundColor: '#fef495',
         width: horizontalScale(310),
         height: verticalScale(500),
         borderRadius: 10,

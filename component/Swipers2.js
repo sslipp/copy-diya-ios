@@ -5,7 +5,7 @@ import MarqueeText from 'react-native-marquee';
 import * as Clipboard from 'expo-clipboard';
 import { horizontalScale, moderateScale, verticalScale } from './Metrics';
 
-export default function Swipers2({ Fam, Name, Otch, Date, image, SetBgCol }) {
+export default function Swipers2({ Fam, Name, Otch, Date, image, bgCol1 }) {
 
     const copyText = async () => {
         Alert.alert('Номер скопійовано');
@@ -14,7 +14,7 @@ export default function Swipers2({ Fam, Name, Otch, Date, image, SetBgCol }) {
 
     return (
         <View>
-            <View testID="Beutiful" style={styles.cardPlatnik}>
+            <View style={[styles.cardPlatnik, { backgroundColor: bgCol1 }]}>
                 <Text></Text>
                 <View>
                     <Text style={styles.textKarta}>Карта платника</Text><Text style={styles.podatki}>податків</Text>
@@ -92,7 +92,6 @@ const styles = StyleSheet.create({
         flex: 1,
     },
     cardPlatnik: {
-        backgroundColor: '#efe3ed',
         width: horizontalScale(310),
         height: verticalScale(500),
         borderRadius: 10,

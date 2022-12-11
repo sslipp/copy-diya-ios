@@ -5,11 +5,11 @@ import MarqueeText from 'react-native-marquee';
 import * as Clipboard from 'expo-clipboard';
 import { horizontalScale, moderateScale, verticalScale } from './Metrics';
 
-export default function Swipers3({ Fam, Name, Otch, Date, image }) {
+export default function Swipers3({ Fam, Name, Otch, Date, image, bgCol3 }) {
 
     return (
         <View>
-            <View testID="vacina" style={styles.card4} >
+            <View testID="vacina" style={[styles.card4, { backgroundColor: bgCol3 }]} >
                 <Text></Text>
                 <View>
                     <Text style={styles.textDocument4}>Внутрішній</Text><Text style={styles.textDocument5}>COVID19-сертифікат</Text>
@@ -118,7 +118,6 @@ const styles = StyleSheet.create({
         elevation: 15,
     },
     card4: {
-        backgroundColor: '#e9f5e7',
         width: horizontalScale(310),
         height: verticalScale(500),
         borderRadius: 10,

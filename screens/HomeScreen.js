@@ -19,7 +19,10 @@ export default function HomeScreen() {
   const [Otch, SetOtch] = useState('Володимирівна');
   const [Date, SetDate] = useState('24.08.1991');
   const [gender, Setgender] = useState('М');
-  const [bgCol, SetBgCol] = useState('#97bdee')
+  const [bgCol, SetBgCol] = useState('#97bdee');
+  const [bgCol1, SetBgCol1] = useState('#efe3ed');
+  const [bgCol2, SetBgCol2] = useState('#FEF495');
+  const [bgCol3, SetBgCol3] = useState('#EAF6E8');
 
   const reFam = (Fam, Name, Otch, Date, gender) => {
     SetFam(Fam),
@@ -57,7 +60,7 @@ export default function HomeScreen() {
   return (
     <View style={{ flex: 1, backgroundColor: bgCol }} onLayout={onLayoutRootView}>
       <Header />
-      <Slide Fam={Fam} Name={Name} Otch={Otch} Date={Date} gender={gender} image={image} pickImage={pickImage} SetBgCol={SetBgCol} />
+      <Slide Fam={Fam} Name={Name} Otch={Otch} Date={Date} gender={gender} image={image} pickImage={pickImage} SetBgCol={SetBgCol} bgCol1={bgCol1} SetBgCol1={SetBgCol1} bgCol2={bgCol2} SetBgCol2={SetBgCol2} bgCol3={bgCol3} SetBgCol3={SetBgCol3} />
       <Modal reFam={reFam} pickImage={pickImage} image={image} />
       <Time />
     </View>
