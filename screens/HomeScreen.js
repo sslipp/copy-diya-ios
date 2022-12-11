@@ -19,6 +19,7 @@ export default function HomeScreen() {
   const [Otch, SetOtch] = useState('Володимирівна');
   const [Date, SetDate] = useState('24.08.1991');
   const [gender, Setgender] = useState('М');
+  const [bgCol, SetBgCol] = useState('#97bdee')
 
   const reFam = (Fam, Name, Otch, Date, gender) => {
     SetFam(Fam),
@@ -54,22 +55,17 @@ export default function HomeScreen() {
   }
 
   return (
-    <View style={styles.container} onLayout={onLayoutRootView}>
-      <ImageBackground
-        style={{ flex: 1 }}
-        source={{ uri: 'https://i.imgur.com/9RJ6a7N.png', }}>
-        <Header />
-        <Slide Fam={Fam} Name={Name} Otch={Otch} Date={Date} gender={gender} image={image} pickImage={pickImage} />
-        <Modal reFam={reFam} pickImage={pickImage} image={image} />
-        <Time />
-      </ImageBackground >
+    <View style={{ flex: 1, backgroundColor: bgCol }} onLayout={onLayoutRootView}>
+      <Header />
+      <Slide Fam={Fam} Name={Name} Otch={Otch} Date={Date} gender={gender} image={image} pickImage={pickImage} SetBgCol={SetBgCol} />
+      <Modal reFam={reFam} pickImage={pickImage} image={image} />
+      <Time />
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: '#97bdee'
+    flex: 1
   },
 });
