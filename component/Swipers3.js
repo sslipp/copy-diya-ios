@@ -5,45 +5,59 @@ import MarqueeText from 'react-native-marquee';
 import * as Clipboard from 'expo-clipboard';
 import { horizontalScale, moderateScale, verticalScale } from './Metrics';
 
-export default function Swipers3({ Fam, Name, Otch, Date, image, bgCol3 }) {
+export default function Swipers3({ Fam, Name, Otch, Date, image, bgCol3, visibleElement3 }) {
 
     return (
         <View>
             <View testID="vacina" style={[styles.card4, { backgroundColor: bgCol3 }]} >
                 <Text></Text>
-                <View>
-                    <Text style={styles.textDocument4}>Внутрішній</Text><Text style={styles.textDocument5}>COVID19-сертифікат</Text>
-                </View>
-                <View style={styles.textCardData44}>
-                    <Text style={styles.textCardDataText}>Дата</Text>
-                    <Text style={styles.textCardDataText}>народження:</Text>
-                    <Text style={styles.textCardDataText}>{Date}</Text>
-                </View>
-                <Text />
-                <View style={styles.textCardNumber33}>
-                    <Text style={styles.textCardNumberText}>Дійсний до:</Text>
-                    <Text style={styles.textCardNumberText}>24.06.2023</Text>
-                </View>
-                <View style={styles.textCardNumber22}>
-                    <Text style={styles.textCardNumberText}>Номер</Text>
-                    <Text style={styles.textCardNumberText}>сертифікату:</Text>
-                    <Text style={styles.textCardNumberText}>URN:UVCI:01:UA:0</Text>
-                    <Text style={styles.textCardNumberText}>E556693061955589</Text>
-                    <Text style={styles.textCardNumberText}>E2520C4F3889304</Text>
-                </View>
-                <View>
-                    {<Image style={styles.image} /> && <Image source={{ uri: image }} style={styles.image} />}
-                </View>
-                <LinearGradient colors={['#FFFFFF00', '#FFFFFF']}></LinearGradient>
-                <View style={styles.CardLine33}>
-                </View>
-                <View>
-                    <View style={styles.Name}>
-                        <Text style={styles.textName}>{Fam}</Text>
-                        <Text style={styles.textName}>{Name}</Text>
-                        <Text style={styles.textName}>{Otch}</Text>
+                {visibleElement3 &&
+                    <View>
+                        <Text style={styles.textDocument4}>Внутрішній</Text><Text style={styles.textDocument5}>COVID19-сертифікат</Text>
                     </View>
-                </View>
+                }
+                {visibleElement3 &&
+                    <View style={styles.textCardData44}>
+                        <Text style={styles.textCardDataText}>Дата</Text>
+                        <Text style={styles.textCardDataText}>народження:</Text>
+                        <Text style={styles.textCardDataText}>{Date}</Text>
+                    </View>
+                }
+                <Text />
+                {visibleElement3 &&
+                    <View style={styles.textCardNumber33}>
+                        <Text style={styles.textCardNumberText}>Дійсний до:</Text>
+                        <Text style={styles.textCardNumberText}>24.06.2023</Text>
+                    </View>
+                }
+                {visibleElement3 &&
+                    <View style={styles.textCardNumber22}>
+                        <Text style={styles.textCardNumberText}>Номер</Text>
+                        <Text style={styles.textCardNumberText}>сертифікату:</Text>
+                        <Text style={styles.textCardNumberText}>URN:UVCI:01:UA:0</Text>
+                        <Text style={styles.textCardNumberText}>E556693061955589</Text>
+                        <Text style={styles.textCardNumberText}>E2520C4F3889304</Text>
+                    </View>
+                }
+                {visibleElement3 &&
+                    <View>
+                        {<Image style={styles.image} /> && <Image source={{ uri: image }} style={styles.image} />}
+                    </View>
+                }
+                <LinearGradient colors={['#FFFFFF00', '#FFFFFF']}></LinearGradient>
+                {visibleElement3 &&
+                    <View style={styles.CardLine33}>
+                    </View>
+                }
+                {visibleElement3 &&
+                    <View>
+                        <View style={styles.Name}>
+                            <Text style={styles.textName}>{Fam}</Text>
+                            <Text style={styles.textName}>{Name}</Text>
+                            <Text style={styles.textName}>{Otch}</Text>
+                        </View>
+                    </View>
+                }
             </View>
         </View>
     )

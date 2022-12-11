@@ -4,50 +4,64 @@ import { LinearGradient } from 'expo-linear-gradient';
 import MarqueeText from 'react-native-marquee';
 import { horizontalScale, moderateScale, verticalScale } from './Metrics';
 
-export default function Swipers({ Fam, Name, Otch, Date, image, bgCol2 }) {
+export default function Swipers({ Fam, Name, Otch, Date, image, bgCol2, visibleElement }) {
 
     return (
         <View>
             <View testID="Hello" style={[styles.card, { backgroundColor: bgCol2 }]} >
                 <Text></Text>
-                <View>
-                    <Text style={styles.textDocument}>єДокумент</Text><Text style={styles.kaska}>🪖</Text>
-                </View>
-                <View style={styles.textCardData}>
-                    <Text style={styles.textCardDataText}>Дата</Text>
-                    <Text style={styles.textCardDataText}>народження:</Text>
-                    <Text style={styles.textCardDataText}>{Date}</Text>
-                </View>
-                <Text />
-                <View style={styles.textCardNumber}>
-                    <Text style={styles.textCardNumberText22}>РНОКПП:</Text>
-                    <Text style={styles.textCardNumberText22}>123000000001</Text>
-                </View>
-                <View>
+                {visibleElement &&
                     <View>
-                        {<Image style={styles.image2} /> && <Image source={{ uri: image }} style={styles.image2} />}
+                        <Text style={styles.textDocument}>єДокумент</Text><Text style={styles.kaska}>🪖</Text>
                     </View>
-                </View>
+                }
+                {visibleElement &&
+                    <View style={styles.textCardData}>
+                        <Text style={styles.textCardDataText}>Дата</Text>
+                        <Text style={styles.textCardDataText}>народження:</Text>
+                        <Text style={styles.textCardDataText}>{Date}</Text>
+                    </View>
+                }
+                <Text />
+                {visibleElement &&
+                    <View style={styles.textCardNumber}>
+                        <Text style={styles.textCardNumberText22}>РНОКПП:</Text>
+                        <Text style={styles.textCardNumberText22}>123000000001</Text>
+                    </View>
+                }
+                {visibleElement &&
+                    <View>
+                        <View>
+                            {<Image style={styles.image2} /> && <Image source={{ uri: image }} style={styles.image2} />}
+                        </View>
+                    </View>
+                }
                 <LinearGradient colors={['#FFFFFF00', '#FFFFFF']}></LinearGradient>
-                <View style={styles.CardLine}>
-                    <LinearGradient start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }} colors={['#668afc', '#a9fce8']} style={styles.gradient}>
-                    </LinearGradient>
-                    <View style={styles.marqText}>
-                        <MarqueeText speed={0.1} marqueeOnStart={true} loop={true} delay={500} style={styles.textCardLine}>Документ діє у військовий час. Ой у лузі червона калина похилилася, чогось наша славна Україна зажурилася. А ми тую червону калину підіймемо, а ми нашу славну Україну, гей, гей, розвеселимо.</MarqueeText>
+                {visibleElement &&
+                    <View style={styles.CardLine}>
+                        <LinearGradient start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }} colors={['#668afc', '#a9fce8']} style={styles.gradient}>
+                        </LinearGradient>
+                        <View style={styles.marqText}>
+                            <MarqueeText speed={0.1} marqueeOnStart={true} loop={true} delay={500} style={styles.textCardLine}>Документ діє у військовий час. Ой у лузі червона калина похилилася, чогось наша славна Україна зажурилася. А ми тую червону калину підіймемо, а ми нашу славну Україну, гей, гей, розвеселимо.</MarqueeText>
+                        </View>
                     </View>
-                </View>
-                <View>
-                    <View style={styles.Namesss}>
-                        <Text style={styles.textName}>{Fam}</Text>
-                        <Text style={styles.textName}>{Name}</Text>
-                        <Text style={styles.textName}>{Otch}</Text>
+                }
+                {visibleElement &&
+                    <View>
+                        <View style={styles.Namesss}>
+                            <Text style={styles.textName}>{Fam}</Text>
+                            <Text style={styles.textName}>{Name}</Text>
+                            <Text style={styles.textName}>{Otch}</Text>
+                        </View>
                     </View>
-                </View>
-                <View>
-                    <Image style={styles.settings} source={{
-                        uri: 'https://i.imgur.com/H5IqEW1.jpg',
-                    }} />
-                </View>
+                }
+                {visibleElement &&
+                    <View>
+                        <Image style={styles.settings} source={{
+                            uri: 'https://i.imgur.com/H5IqEW1.jpg',
+                        }} />
+                    </View>
+                }
             </View>
         </View>
     )

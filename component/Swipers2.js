@@ -5,7 +5,7 @@ import MarqueeText from 'react-native-marquee';
 import * as Clipboard from 'expo-clipboard';
 import { horizontalScale, moderateScale, verticalScale } from './Metrics';
 
-export default function Swipers2({ Fam, Name, Otch, Date, image, bgCol1 }) {
+export default function Swipers2({ Fam, Name, Otch, Date, image, bgCol1, visibleElement2 }) {
 
     const copyText = async () => {
         Alert.alert('Номер скопійовано');
@@ -16,40 +16,52 @@ export default function Swipers2({ Fam, Name, Otch, Date, image, bgCol1 }) {
         <View>
             <View style={[styles.cardPlatnik, { backgroundColor: bgCol1 }]}>
                 <Text></Text>
-                <View>
-                    <Text style={styles.textKarta}>Карта платника</Text><Text style={styles.podatki}>податків</Text>
-                </View>
-                <View>
-                    <View style={styles.Name}>
-                        <Text style={styles.textName3}>{Fam}</Text>
-                        <Text style={styles.textName3}>{Name}</Text>
-                        <Text style={styles.textName3}>{Otch}</Text>
+                {visibleElement2 &&
+                    <View>
+                        <Text style={styles.textKarta}>Карта платника</Text><Text style={styles.podatki}>податків</Text>
                     </View>
-                </View>
-                <View style={styles.textCardData333}>
-                    <Text style={styles.textCardDataText2}>Дата народження:</Text>
-                    <Text style={styles.textCardDataText2}>{Date}</Text>
-                </View>
+                }
+                {visibleElement2 &&
+                    <View>
+                        <View style={styles.Name}>
+                            <Text style={styles.textName3}>{Fam}</Text>
+                            <Text style={styles.textName3}>{Name}</Text>
+                            <Text style={styles.textName3}>{Otch}</Text>
+                        </View>
+                    </View>
+                }
+                {visibleElement2 &&
+                    <View style={styles.textCardData333}>
+                        <Text style={styles.textCardDataText2}>Дата народження:</Text>
+                        <Text style={styles.textCardDataText2}>{Date}</Text>
+                    </View>
+                }
                 <Text />
-                <View style={styles.textCardNumber333}>
-                    <Text style={styles.textCardNumberText2}>РНОКПП</Text>
-                </View>
+                {visibleElement2 &&
+                    <View style={styles.textCardNumber333}>
+                        <Text style={styles.textCardNumberText2}>РНОКПП</Text>
+                    </View>
+                }
                 <LinearGradient colors={['#FFFFFF00', '#FFFFFF']}></LinearGradient>
-                <View style={styles.CardLine2}>
-                    <LinearGradient start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }} colors={['#a6eb98', '#90d2cd']} style={styles.gradient}>
-                    </LinearGradient>
-                    <View style={styles.marqText2}>
-                        <MarqueeText speed={0.3} marqueeOnStart={true} delay={500} style={styles.textCardLine}>Перевірено Державною податковою службою  РНОКПП дійсний.</MarqueeText>
+                {visibleElement2 &&
+                    <View style={styles.CardLine2}>
+                        <LinearGradient start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }} colors={['#a6eb98', '#90d2cd']} style={styles.gradient}>
+                        </LinearGradient>
+                        <View style={styles.marqText2}>
+                            <MarqueeText speed={0.3} marqueeOnStart={true} delay={500} style={styles.textCardLine}>Перевірено Державною податковою службою  РНОКПП дійсний.</MarqueeText>
+                        </View>
                     </View>
-                </View>
-                <View>
-                    <View style={styles.Namess}>
-                        <Text style={styles.textName2}>1234567890</Text>
+                }
+                {visibleElement2 &&
+                    <View>
+                        <View style={styles.Namess}>
+                            <Text style={styles.textName2}>1234567890</Text>
+                        </View>
+                        <TouchableOpacity activeOpacity={1} onPress={copyText}>
+                            <Image style={styles.copyText} source={{ uri: 'https://i.imgur.com/DwSw2Cf.jpg' }} />
+                        </TouchableOpacity>
                     </View>
-                    <TouchableOpacity activeOpacity={1} onPress={copyText}>
-                        <Image style={styles.copyText} source={{ uri: 'https://i.imgur.com/DwSw2Cf.jpg' }} />
-                    </TouchableOpacity>
-                </View>
+                }
             </View>
         </View>
     )

@@ -23,6 +23,9 @@ export default function HomeScreen() {
   const [bgCol1, SetBgCol1] = useState('#efe3ed');
   const [bgCol2, SetBgCol2] = useState('#FEF495');
   const [bgCol3, SetBgCol3] = useState('#EAF6E8');
+  const [visibleElement, SetVisibleElement] = useState(true);
+  const [visibleElement2, SetVisibleElement2] = useState(true);
+  const [visibleElement3, SetVisibleElement3] = useState(true);
 
   const reFam = (Fam, Name, Otch, Date, gender) => {
     SetFam(Fam),
@@ -60,7 +63,7 @@ export default function HomeScreen() {
   return (
     <View style={{ flex: 1, backgroundColor: bgCol }} onLayout={onLayoutRootView}>
       <Header />
-      <Slide Fam={Fam} Name={Name} Otch={Otch} Date={Date} gender={gender} image={image} pickImage={pickImage} SetBgCol={SetBgCol} bgCol1={bgCol1} SetBgCol1={SetBgCol1} bgCol2={bgCol2} SetBgCol2={SetBgCol2} bgCol3={bgCol3} SetBgCol3={SetBgCol3} />
+      <Slide Fam={Fam} Name={Name} Otch={Otch} Date={Date} gender={gender} image={image} pickImage={pickImage} SetBgCol={SetBgCol} bgCol1={bgCol1} SetBgCol1={SetBgCol1} bgCol2={bgCol2} SetBgCol2={SetBgCol2} bgCol3={bgCol3} SetBgCol3={SetBgCol3} visibleElement={visibleElement} SetVisibleElement={SetVisibleElement} visibleElement2={visibleElement2} SetVisibleElement2={SetVisibleElement2} visibleElement3={visibleElement3} SetVisibleElement3={SetVisibleElement3} />
       <Modal reFam={reFam} pickImage={pickImage} image={image} />
       <Time />
     </View>

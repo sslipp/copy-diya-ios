@@ -19,31 +19,38 @@ export default class Slide extends Component {
         LogBox.ignoreLogs(['Animated: `useNativeDriver`']);
         return (
             <View style={{ flex: 1 }}>
-                <CarouselPager ref={ref => this.carousel = ref} blurredOpacity={1} blurredZoom={0.85} onPageChange={i => {
+                <CarouselPager ref={ref => this.carousel = ref} animationDuration={200} blurredOpacity={1} blurredZoom={0.85} onPageChange={i => {
                     this.setState({ active: i })
                     if (i === 0) {
                         this.props.SetBgCol('#97bdee')
                         this.props.SetBgCol1('#FEF495')
                         this.props.SetBgCol2('#FEF495')
+                        this.props.SetVisibleElement(true)
+                        this.props.SetVisibleElement2(false)
                     } else if (i === 1) {
                         this.props.SetBgCol('#DFC7D7')
                         this.props.SetBgCol1('#efe3ed')
                         this.props.SetBgCol2('#efe3ed')
                         this.props.SetBgCol3('#efe3ed')
+                        this.props.SetVisibleElement(false)
+                        this.props.SetVisibleElement2(true)
+                        this.props.SetVisibleElement3(false)
                     } else if (i === 2) {
                         this.props.SetBgCol('#BEEEB4')
                         this.props.SetBgCol1('#EAF6E8')
                         this.props.SetBgCol3('#EAF6E8')
+                        this.props.SetVisibleElement2(false)
+                        this.props.SetVisibleElement3(true)
                     }
                 }}>
                     <View key={'page0'}>
-                        <Swipers Fam={this.props.Fam} Name={this.props.Name} Otch={this.props.Otch} Date={this.props.Date} gender={this.props.gender} image={this.props.image} pickImage={this.props.pickImage} bgCol2={this.props.bgCol2} />
+                        <Swipers Fam={this.props.Fam} Name={this.props.Name} Otch={this.props.Otch} Date={this.props.Date} gender={this.props.gender} image={this.props.image} pickImage={this.props.pickImage} bgCol2={this.props.bgCol2} visibleElement={this.props.visibleElement} />
                     </View>
                     <View key={'page1'}>
-                        <Swipers2 Fam={this.props.Fam} Name={this.props.Name} Otch={this.props.Otch} Date={this.props.Date} gender={this.props.gender} image={this.props.image} pickImage={this.props.pickImage} bgCol1={this.props.bgCol1} />
+                        <Swipers2 Fam={this.props.Fam} Name={this.props.Name} Otch={this.props.Otch} Date={this.props.Date} gender={this.props.gender} image={this.props.image} pickImage={this.props.pickImage} bgCol1={this.props.bgCol1} visibleElement2={this.props.visibleElement2} />
                     </View>
                     <View key={'page2'}>
-                        <Swipers3 Fam={this.props.Fam} Name={this.props.Name} Otch={this.props.Otch} Date={this.props.Date} gender={this.props.gender} image={this.props.image} pickImage={this.props.pickImage} bgCol3={this.props.bgCol3} />
+                        <Swipers3 Fam={this.props.Fam} Name={this.props.Name} Otch={this.props.Otch} Date={this.props.Date} gender={this.props.gender} image={this.props.image} pickImage={this.props.pickImage} bgCol3={this.props.bgCol3} visibleElement3={this.props.visibleElement3} />
                     </View>
                 </CarouselPager>
                 <Dots length={3} active={this.state.active} paddingVertical={24.5} activeColor='#0A0603' passiveColor='#7E8A81' passiveDotWidth={5} passiveDotHeight={5} activeDotHeight={7} activeDotWidth={7} />
