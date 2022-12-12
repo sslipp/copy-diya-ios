@@ -139,7 +139,7 @@ const styles = StyleSheet.create({
         width: 300,
         height: 300,
         right: 4,
-        top: 80
+        top: 65
     },
     CardLine33: {
         borderBottomColor: '#ceebbf',

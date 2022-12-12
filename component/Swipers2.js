@@ -1,76 +1,145 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, Component } from 'react'
 import { Vibration, StyleSheet, Text, View, Image, SafeAreaView, TouchableOpacity, Button, Animated, AppRegistry, TextInput, Alert } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import MarqueeText from 'react-native-marquee';
 import * as Clipboard from 'expo-clipboard';
 import { horizontalScale, moderateScale, verticalScale } from './Metrics';
 
-export default function Swipers2({ Fam, Name, Otch, Date, image, bgCol1, visibleElement2 }) {
+const copyText = async () => {
+    Alert.alert('Номер скопійовано');
+    await Clipboard.setStringAsync('1234567890');
+}
 
-    const copyText = async () => {
-        Alert.alert('Номер скопійовано');
-        await Clipboard.setStringAsync('1234567890');
+export default class Swipers2 extends Component {
+    UNSAFE_componentWillMount() {
+        this.animatedValue = new Animated.Value(0);
+        this.value = 0;
+        this.animatedValue.addListener(({ value }) => {
+            this.value = value;
+        })
+        this.frontInterpolate = this.animatedValue.interpolate({
+            inputRange: [0, 180],
+            outputRange: ['0deg', '180deg'],
+        })
+        this.backInterpolate = this.animatedValue.interpolate({
+            inputRange: [0, 180],
+            outputRange: ['180deg', '360deg']
+        })
+        this.frontOpacity = this.animatedValue.interpolate({
+            inputRange: [89, 90],
+            outputRange: [1, 0]
+        })
+        this.backOpacity = this.animatedValue.interpolate({
+            inputRange: [89, 90],
+            outputRange: [0, 1]
+        })
     }
 
-    return (
-        <View>
-            <View style={[styles.cardPlatnik, { backgroundColor: bgCol1 }]}>
-                <Text></Text>
-                {visibleElement2 &&
-                    <View>
-                        <Text style={styles.textKarta}>Карта платника</Text><Text style={styles.podatki}>податків</Text>
-                    </View>
-                }
-                {visibleElement2 &&
-                    <View>
-                        <View style={styles.Name}>
-                            <Text style={styles.textName3}>{Fam}</Text>
-                            <Text style={styles.textName3}>{Name}</Text>
-                            <Text style={styles.textName3}>{Otch}</Text>
-                        </View>
-                    </View>
-                }
-                {visibleElement2 &&
-                    <View style={styles.textCardData333}>
-                        <Text style={styles.textCardDataText2}>Дата народження:</Text>
-                        <Text style={styles.textCardDataText2}>{Date}</Text>
-                    </View>
-                }
-                <Text />
-                {visibleElement2 &&
-                    <View style={styles.textCardNumber333}>
-                        <Text style={styles.textCardNumberText2}>РНОКПП</Text>
-                    </View>
-                }
-                <LinearGradient colors={['#FFFFFF00', '#FFFFFF']}></LinearGradient>
-                {visibleElement2 &&
-                    <View style={styles.CardLine2}>
-                        <LinearGradient start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }} colors={['#a6eb98', '#90d2cd']} style={styles.gradient}>
-                        </LinearGradient>
-                        <View style={styles.marqText2}>
-                            <MarqueeText speed={0.3} marqueeOnStart={true} delay={500} style={styles.textCardLine}>Перевірено Державною податковою службою  РНОКПП дійсний.</MarqueeText>
-                        </View>
-                    </View>
-                }
-                {visibleElement2 &&
-                    <View>
-                        <View style={styles.Namess}>
-                            <Text style={styles.textName2}>1234567890</Text>
-                        </View>
-                        <TouchableOpacity activeOpacity={1} onPress={copyText}>
-                            <Image style={styles.copyText} source={{ uri: 'https://i.imgur.com/DwSw2Cf.jpg' }} />
-                        </TouchableOpacity>
-                    </View>
-                }
+    flipCard() {
+        if (this.value >= 90) {
+            Animated.spring(this.animatedValue, {
+                toValue: 0,
+                friction: 8,
+                tension: 10
+            }).start();
+        } else {
+            Animated.spring(this.animatedValue, {
+                toValue: 180,
+                friction: 8,
+                tension: 10
+            }).start();
+        }
+
+    }
+
+    render() {
+        const frontAnimatedStyle = {
+            transform: [
+                { rotateY: this.frontInterpolate }
+            ]
+        }
+        const backAnimatedStyle = {
+            transform: [
+                { rotateY: this.backInterpolate }
+            ]
+        }
+
+        return (
+            <View>
+                <Animated.View style={[frontAnimatedStyle, { opacity: this.frontOpacity }]}>
+                    <TouchableOpacity activeOpacity={1} onPress={() => this.flipCard()} style={[styles.cardPlatnik, { backgroundColor: this.props.bgCol1 }]}>
+                        <Text></Text>
+                        {this.props.visibleElement2 &&
+                            <View>
+                                <Text style={styles.textKarta}>Карта платника</Text><Text style={styles.podatki}>податків</Text>
+                            </View>
+                        }
+                        {this.props.visibleElement2 &&
+                            <View>
+                                <View style={styles.Name}>
+                                    <Text style={styles.textName3}>{this.props.Fam}</Text>
+                                    <Text style={styles.textName3}>{this.props.Name}</Text>
+                                    <Text style={styles.textName3}>{this.props.Otch}</Text>
+                                </View>
+                            </View>
+                        }
+                        {this.props.visibleElement2 &&
+                            <View style={styles.textCardData333}>
+                                <Text style={styles.textCardDataText2}>Дата народження:</Text>
+                                <Text style={styles.textCardDataText2}>{this.props.Date}</Text>
+                            </View>
+                        }
+                        <Text />
+                        {this.props.visibleElement2 &&
+                            <View style={styles.textCardNumber333}>
+                                <Text style={styles.textCardNumberText2}>РНОКПП</Text>
+                            </View>
+                        }
+                        <LinearGradient colors={['#FFFFFF00', '#FFFFFF']}></LinearGradient>
+                        {this.props.visibleElement2 &&
+                            <View style={styles.CardLine2}>
+                                <LinearGradient start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }} colors={['#a6eb98', '#90d2cd']} style={styles.gradient}>
+                                </LinearGradient>
+                                <View style={styles.marqText2}>
+                                    <MarqueeText speed={0.3} marqueeOnStart={true} delay={500} style={styles.textCardLine}>Перевірено Державною податковою службою  РНОКПП дійсний.</MarqueeText>
+                                </View>
+                            </View>
+                        }
+                        {this.props.visibleElement2 &&
+                            <View>
+                                <View style={styles.Namess}>
+                                    <Text style={styles.textName2}>1234567890</Text>
+                                </View>
+                                <TouchableOpacity activeOpacity={1} onPress={copyText}>
+                                    <Image style={styles.copyText} source={{ uri: 'https://i.imgur.com/DwSw2Cf.jpg' }} />
+                                </TouchableOpacity>
+                            </View>
+                        }
+                    </TouchableOpacity>
+                </Animated.View>
+                <Animated.View style={[styles.cardBack, backAnimatedStyle, { opacity: this.backOpacity }]}>
+                    <TouchableOpacity activeOpacity={1} onPress={() => this.flipCard()} style={[styles.cardPlatnik, { backgroundColor: this.props.bgCol1 }]} >
+                        {this.props.visibleElement2 &&
+                            <Image style={styles.imageQRCode} source={require('./../assets/qrcodeCard.png')} />
+                        }
+                    </TouchableOpacity>
+                </Animated.View>
             </View>
-        </View>
-    )
+        )
+    }
 }
 
 const styles = StyleSheet.create({
     textCardNumberText22: {
         fontFamily: 'ukraineregular',
         fontSize: moderateScale(12)
+    },
+    imageQRCode: {
+        position: 'absolute',
+        width: 300,
+        height: 300,
+        right: 4,
+        top: 65
     },
     CardLine33: {
         borderBottomColor: '#ceebbf',
@@ -151,20 +220,7 @@ const styles = StyleSheet.create({
         elevation: 15,
     },
     cardBack: {
-        position: 'absolute',
-        backgroundColor: '#fef495',
-        width: horizontalScale(310),
-        height: verticalScale(440),
-        borderRadius: 10,
-        left: horizontalScale(27),
-        top: verticalScale(30),
-        shadowColor: "#000",
-        shadowOffset: {
-            width: 0,
-            height: 10
-        },
-        shadowOpacity: 0.15,
-        shadowRadius: 6.49
+        position: 'absolute'
     },
     image: {
         marginTop: verticalScale(-12),

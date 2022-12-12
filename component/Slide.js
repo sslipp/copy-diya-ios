@@ -19,7 +19,7 @@ export default class Slide extends Component {
         LogBox.ignoreLogs(['Animated: `useNativeDriver`']);
         return (
             <View style={{ flex: 1 }}>
-                <CarouselPager ref={ref => this.carousel = ref} animationDuration={200} blurredOpacity={1} blurredZoom={0.85} onPageChange={i => {
+                <CarouselPager ref={ref => this.carousel = ref} animationDuration={250} blurredOpacity={1} blurredZoom={0.85} onPageChange={i => {
                     this.setState({ active: i })
                     if (i === 0) {
                         this.props.SetBgCol('#97bdee')
