@@ -1,72 +1,141 @@
-import React, { useState } from 'react'
+import React, { useState, Component } from 'react';
 import { Vibration, StyleSheet, Text, View, Image, SafeAreaView, TouchableOpacity, Button, Animated, AppRegistry, TextInput, Alert } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import MarqueeText from 'react-native-marquee';
 import * as Clipboard from 'expo-clipboard';
 import { horizontalScale, moderateScale, verticalScale } from './Metrics';
 
-export default function Swipers3({ Fam, Name, Otch, Date, image, bgCol3, visibleElement3 }) {
+export default class Swipers3 extends Component {
+    UNSAFE_componentWillMount() {
+        this.animatedValue = new Animated.Value(0);
+        this.value = 0;
+        this.animatedValue.addListener(({ value }) => {
+            this.value = value;
+        })
+        this.frontInterpolate = this.animatedValue.interpolate({
+            inputRange: [0, 180],
+            outputRange: ['0deg', '180deg'],
+        })
+        this.backInterpolate = this.animatedValue.interpolate({
+            inputRange: [0, 180],
+            outputRange: ['180deg', '360deg']
+        })
+        this.frontOpacity = this.animatedValue.interpolate({
+            inputRange: [89, 90],
+            outputRange: [1, 0]
+        })
+        this.backOpacity = this.animatedValue.interpolate({
+            inputRange: [89, 90],
+            outputRange: [0, 1]
+        })
+    }
 
-    return (
-        <View>
-            <View testID="vacina" style={[styles.card4, { backgroundColor: bgCol3 }]} >
-                <Text></Text>
-                {visibleElement3 &&
-                    <View>
-                        <Text style={styles.textDocument4}>Внутрішній</Text><Text style={styles.textDocument5}>COVID19-сертифікат</Text>
-                    </View>
-                }
-                {visibleElement3 &&
-                    <View style={styles.textCardData44}>
-                        <Text style={styles.textCardDataText}>Дата</Text>
-                        <Text style={styles.textCardDataText}>народження:</Text>
-                        <Text style={styles.textCardDataText}>{Date}</Text>
-                    </View>
-                }
-                <Text />
-                {visibleElement3 &&
-                    <View style={styles.textCardNumber33}>
-                        <Text style={styles.textCardNumberText}>Дійсний до:</Text>
-                        <Text style={styles.textCardNumberText}>24.06.2023</Text>
-                    </View>
-                }
-                {visibleElement3 &&
-                    <View style={styles.textCardNumber22}>
-                        <Text style={styles.textCardNumberText}>Номер</Text>
-                        <Text style={styles.textCardNumberText}>сертифікату:</Text>
-                        <Text style={styles.textCardNumberText}>URN:UVCI:01:UA:0</Text>
-                        <Text style={styles.textCardNumberText}>E556693061955589</Text>
-                        <Text style={styles.textCardNumberText}>E2520C4F3889304</Text>
-                    </View>
-                }
-                {visibleElement3 &&
-                    <View>
-                        {<Image style={styles.image} /> && <Image source={{ uri: image }} style={styles.image} />}
-                    </View>
-                }
-                <LinearGradient colors={['#FFFFFF00', '#FFFFFF']}></LinearGradient>
-                {visibleElement3 &&
-                    <View style={styles.CardLine33}>
-                    </View>
-                }
-                {visibleElement3 &&
-                    <View>
-                        <View style={styles.Name}>
-                            <Text style={styles.textName}>{Fam}</Text>
-                            <Text style={styles.textName}>{Name}</Text>
-                            <Text style={styles.textName}>{Otch}</Text>
-                        </View>
-                    </View>
-                }
+    flipCard() {
+        if (this.value >= 90) {
+            Animated.spring(this.animatedValue, {
+                toValue: 0,
+                friction: 8,
+                tension: 10
+            }).start();
+        } else {
+            Animated.spring(this.animatedValue, {
+                toValue: 180,
+                friction: 8,
+                tension: 10
+            }).start();
+        }
+
+    }
+
+    render() {
+        const frontAnimatedStyle = {
+            transform: [
+                { rotateY: this.frontInterpolate }
+            ]
+        }
+        const backAnimatedStyle = {
+            transform: [
+                { rotateY: this.backInterpolate }
+            ]
+        }
+
+        return (
+            <View>
+                <Animated.View style={[frontAnimatedStyle, { opacity: this.frontOpacity }]}>
+                    <TouchableOpacity activeOpacity={1} onPress={() => this.flipCard()} style={[styles.card4, { backgroundColor: this.props.bgCol3 }]} >
+                        <Text></Text>
+                        {this.props.visibleElement3 &&
+                            <View>
+                                <Text style={styles.textDocument4}>Внутрішній</Text><Text style={styles.textDocument5}>COVID19-сертифікат</Text>
+                            </View>
+                        }
+                        {this.props.visibleElement3 &&
+                            <View style={styles.textCardData44}>
+                                <Text style={styles.textCardDataText}>Дата</Text>
+                                <Text style={styles.textCardDataText}>народження:</Text>
+                                <Text style={styles.textCardDataText}>{this.props.Date}</Text>
+                            </View>
+                        }
+                        <Text />
+                        {this.props.visibleElement3 &&
+                            <View style={styles.textCardNumber33}>
+                                <Text style={styles.textCardNumberText}>Дійсний до:</Text>
+                                <Text style={styles.textCardNumberText}>24.06.2023</Text>
+                            </View>
+                        }
+                        {this.props.visibleElement3 &&
+                            <View style={styles.textCardNumber22}>
+                                <Text style={styles.textCardNumberText}>Номер</Text>
+                                <Text style={styles.textCardNumberText}>сертифікату:</Text>
+                                <Text style={styles.textCardNumberText}>URN:UVCI:01:UA:0</Text>
+                                <Text style={styles.textCardNumberText}>E556693061955589</Text>
+                                <Text style={styles.textCardNumberText}>E2520C4F3889304</Text>
+                            </View>
+                        }
+                        {this.props.visibleElement3 &&
+                            <View>
+                                {<Image style={styles.image} /> && <Image source={{ uri: this.props.image }} style={styles.image} />}
+                            </View>
+                        }
+                        <LinearGradient colors={['#FFFFFF00', '#FFFFFF']}></LinearGradient>
+                        {this.props.visibleElement3 &&
+                            <View style={styles.CardLine33}>
+                            </View>
+                        }
+                        {this.props.visibleElement3 &&
+                            <View>
+                                <View style={styles.Name}>
+                                    <Text style={styles.textName}>{this.props.Fam}</Text>
+                                    <Text style={styles.textName}>{this.props.Name}</Text>
+                                    <Text style={styles.textName}>{this.props.Otch}</Text>
+                                </View>
+                            </View>
+                        }
+                    </TouchableOpacity>
+                </Animated.View>
+                <Animated.View style={[styles.cardBack, backAnimatedStyle, { opacity: this.backOpacity }]}>
+                    <TouchableOpacity activeOpacity={1} onPress={() => this.flipCard()} style={[styles.card4, { backgroundColor: this.props.bgCol3 }]} >
+                        {this.props.visibleElement3 &&
+                            <Image style={styles.imageQRCode} source={require('./../assets/qrcodeCard.png')} />
+                        }
+                    </TouchableOpacity>
+                </Animated.View>
             </View>
-        </View>
-    )
+        )
+    }
 }
 
 const styles = StyleSheet.create({
     textCardNumberText22: {
         fontFamily: 'ukraineregular',
         fontSize: moderateScale(12)
+    },
+    imageQRCode: {
+        position: 'absolute',
+        width: 300,
+        height: 300,
+        right: 4,
+        top: 65
     },
     CardLine33: {
         borderBottomColor: '#ceebbf',
@@ -147,20 +216,7 @@ const styles = StyleSheet.create({
         elevation: 15,
     },
     cardBack: {
-        position: 'absolute',
-        backgroundColor: '#fef495',
-        width: horizontalScale(310),
-        height: verticalScale(440),
-        borderRadius: 10,
-        left: horizontalScale(27),
-        top: verticalScale(30),
-        shadowColor: "#000",
-        shadowOffset: {
-            width: 0,
-            height: 10
-        },
-        shadowOpacity: 0.15,
-        shadowRadius: 6.49
+        position: 'absolute'
     },
     image: {
         marginTop: verticalScale(-12),
