@@ -12,6 +12,7 @@ export default function HomeScreen() {
   const [fontsLoaded] = useFonts({
     'ukrainebold': require('../assets/fonts/ukrainebold.otf'),
     'ukraineregular': require('../assets/fonts/ukraineregular.otf'),
+    'ukrainelight': require('../assets/fonts/ukrainelight.otf'),
   });
 
   const [Fam, SetFam] = useState('Дія');

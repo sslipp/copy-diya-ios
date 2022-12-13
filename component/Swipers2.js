@@ -120,7 +120,10 @@ export default class Swipers2 extends Component {
                 <Animated.View style={[styles.cardBack, backAnimatedStyle, { opacity: this.backOpacity }]}>
                     <TouchableOpacity activeOpacity={1} onPress={() => this.flipCard()} style={[styles.cardPlatnik, { backgroundColor: this.props.bgCol1 }]} >
                         {this.props.visibleElement2 &&
-                            <Image style={styles.imageQRCode} source={require('./../assets/qrcodeCard.png')} />
+                            <View>
+                                <Text style={styles.textQR}>QR-КОД ДІЯТИМЕ 3 ХВ</Text>
+                                <Image style={styles.imageQRCode} source={require('./../assets/qrcodeCard.png')} />
+                            </View>
                         }
                     </TouchableOpacity>
                 </Animated.View>
@@ -140,6 +143,13 @@ const styles = StyleSheet.create({
         height: 300,
         right: 4,
         top: 65
+    },
+    textQR: {
+        color: '#888',
+        fontSize: 10,
+        fontFamily: 'ukrainelight',
+        marginTop: 80,
+        marginLeft: 37
     },
     CardLine33: {
         borderBottomColor: '#ceebbf',
