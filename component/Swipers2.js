@@ -123,6 +123,12 @@ export default class Swipers2 extends Component {
                             <View>
                                 <Text style={styles.textQR}>QR-КОД ДІЯТИМЕ 3 ХВ</Text>
                                 <Image style={styles.imageQRCode} source={require('./../assets/qrcodeCard.png')} />
+                                <TouchableOpacity activeOpacity={1}>
+                                    <Image style={styles.qrCodeBtn} source={require('./../assets/qrCodeBtn.png')} />
+                                </TouchableOpacity>
+                                {/* <TouchableOpacity activeOpacity={1}>
+                                    <Image style={styles.qrCodeBtn} source={require('./../assets/qrCodeBtn.png')} />
+                                </TouchableOpacity> */}
                             </View>
                         }
                     </TouchableOpacity>
@@ -144,11 +150,17 @@ const styles = StyleSheet.create({
         right: 4,
         top: 65
     },
+    qrCodeBtn: {
+        position: 'absolute',
+        width: 70,
+        height: 70,
+        marginTop: 235
+    },
     textQR: {
         color: '#888',
         fontSize: 10,
         fontFamily: 'ukrainelight',
-        marginTop: 80,
+        marginTop: 65,
         marginLeft: 37
     },
     CardLine33: {
