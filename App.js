@@ -7,12 +7,14 @@ import HomeScreen from './screens/HomeScreen';
 import QrCode from './screens/QrCode';
 import Message from './screens/Message';
 import Messages from './screens/Messages';
+import { StatusBar } from 'expo-status-bar';
 
 const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
     <NavigationContainer>
+      <StatusBar style="auto" backgroundColor="transparent" translucent={true} />
       <Stack.Navigator>
         <Stack.Screen
           name="Login"
