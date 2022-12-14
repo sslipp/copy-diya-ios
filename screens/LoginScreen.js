@@ -84,7 +84,8 @@ const styles = StyleSheet.create({
     },
     Text: {
         textAlign: 'center',
-        fontSize: 20
+        fontSize: 20,
+        fontWeight: '500'
     },
     buttonsBuy: {
         width: '40%',
