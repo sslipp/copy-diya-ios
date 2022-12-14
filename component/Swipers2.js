@@ -147,6 +147,7 @@ export default class Swipers2 extends Component {
                                         <Text style={styles.textBareCodeReplace}></Text>
                                         <Text style={styles.textBareCode}>ШТРИХКОД ДІЯТИМЕ 3 ХВ</Text>
                                         <Image style={styles.imageBarCode} source={require('./../assets/barcode.png')} />
+                                        <Text style={styles.barCodeTxt}>1234567890123</Text>
                                         <TouchableOpacity activeOpacity={1} onPress={() => {
                                             this.props.setQrCode(true)
                                             this.props.setBarCode(false)
@@ -173,6 +174,13 @@ const styles = StyleSheet.create({
     textCardNumberText22: {
         fontFamily: 'ukraineregular',
         fontSize: moderateScale(12)
+    },
+    barCodeTxt: {
+        position: 'absolute',
+        marginTop: 225,
+        fontSize: 15,
+        marginLeft: 95,
+        fontFamily: 'ukraineregular'
     },
     textBareCodeReplace: {
         color: '#888',

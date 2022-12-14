@@ -29,6 +29,8 @@ export default function HomeScreen() {
   const [visibleElement3, SetVisibleElement3] = useState(true);
   const [QrCode, setQrCode] = useState(true);
   const [BarCode, setBarCode] = useState(false);
+  const [QrCodeTwo, setQrCodeTwo] = useState(true);
+  const [BarCodeTwo, setBarCodeTwo] = useState(false);
 
   const reFam = (Fam, Name, Otch, Date, gender) => {
     SetFam(Fam),
@@ -67,7 +69,7 @@ export default function HomeScreen() {
     <View style={{ flex: 1, backgroundColor: bgCol }} onLayout={onLayoutRootView}>
       <Header />
       <Slide Fam={Fam} Name={Name} Otch={Otch} Date={Date} gender={gender} image={image} pickImage={pickImage} SetBgCol={SetBgCol} bgCol1={bgCol1} SetBgCol1={SetBgCol1} bgCol2={bgCol2} SetBgCol2={SetBgCol2} bgCol3={bgCol3} SetBgCol3={SetBgCol3} visibleElement={visibleElement} SetVisibleElement={SetVisibleElement} visibleElement2={visibleElement2} SetVisibleElement2={SetVisibleElement2} visibleElement3={visibleElement3} SetVisibleElement3={SetVisibleElement3}
-        QrCode={QrCode} setQrCode={setQrCode} BarCode={BarCode} setBarCode={setBarCode}
+        QrCode={QrCode} setQrCode={setQrCode} BarCode={BarCode} setBarCode={setBarCode} QrCodeTwo={QrCodeTwo} setQrCodeTwo={setQrCodeTwo} BarCodeTwo={BarCodeTwo} setBarCodeTwo={setBarCodeTwo}
       />
       <Modal reFam={reFam} pickImage={pickImage} image={image} />
       <Time />
