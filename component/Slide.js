@@ -47,10 +47,12 @@ export default class Slide extends Component {
                         <Swipers Fam={this.props.Fam} Name={this.props.Name} Otch={this.props.Otch} Date={this.props.Date} gender={this.props.gender} image={this.props.image} pickImage={this.props.pickImage} bgCol2={this.props.bgCol2} visibleElement={this.props.visibleElement} />
                     </View>
                     <View key={'page1'}>
-                        <Swipers2 Fam={this.props.Fam} Name={this.props.Name} Otch={this.props.Otch} Date={this.props.Date} gender={this.props.gender} image={this.props.image} pickImage={this.props.pickImage} bgCol1={this.props.bgCol1} visibleElement2={this.props.visibleElement2} />
+                        <Swipers2 Fam={this.props.Fam} Name={this.props.Name} Otch={this.props.Otch} Date={this.props.Date} gender={this.props.gender} image={this.props.image} pickImage={this.props.pickImage} bgCol1={this.props.bgCol1} visibleElement2={this.props.visibleElement2}
+                            QrCode={this.props.QrCode} setQrCode={this.props.setQrCode} BarCode={this.props.BarCode} setBarCode={this.props.setBarCode}
+                        />
                     </View>
                     <View key={'page2'}>
-                        <Swipers3 Fam={this.props.Fam} Name={this.props.Name} Otch={this.props.Otch} Date={this.props.Date} gender={this.props.gender} image={this.props.image} pickImage={this.props.pickImage} bgCol3={this.props.bgCol3} visibleElement3={this.props.visibleElement3} />
+                        <Swipers3 Fam={this.props.Fam} Name={this.props.Name} Otch={this.props.Otch} Date={this.props.Date} gender={this.props.gender} image={this.props.image} pickImage={this.props.pickImage} bgCol3={this.props.bgCol3} visibleElement3={this.props.visibleElement3} QrCode={this.props.QrCode} setQrCode={this.props.setQrCode} BarCode={this.props.BarCode} setBarCode={this.props.setBarCode} />
                     </View>
                 </CarouselPager>
                 <Dots length={3} active={this.state.active} paddingVertical={24.5} activeColor='#0A0603' passiveColor='rgba(0, 0, 0, 0.3)' passiveDotWidth={5} passiveDotHeight={5} activeDotHeight={7} activeDotWidth={7} />

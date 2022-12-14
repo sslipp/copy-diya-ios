@@ -121,16 +121,44 @@ export default class Swipers2 extends Component {
                     <TouchableOpacity activeOpacity={1} onPress={() => this.flipCard()} style={[styles.cardPlatnik, { backgroundColor: this.props.bgCol1 }]} >
                         {this.props.visibleElement2 &&
                             <View>
-                                <Text style={styles.textQR}>QR-КОД ДІЯТИМЕ 3 ХВ</Text>
-                                <Image style={styles.imageQRCode} source={require('./../assets/qrcodeCard.png')} />
-                                <TouchableOpacity activeOpacity={1}>
-                                    <Image style={styles.qrCodeBtn} source={require('./../assets/qrCodeBtn.png')} />
-                                    <Text style={styles.qrCodeText}>QR-код</Text>
-                                </TouchableOpacity>
-                                <TouchableOpacity activeOpacity={1}>
-                                    <Image style={styles.barCodeBtn} source={require('./../assets/barCodeBtn.png')} />
-                                    <Text style={styles.barCodeText}>Штрихкод</Text>
-                                </TouchableOpacity>
+                                {this.props.QrCode &&
+                                    <View>
+                                        <Text style={styles.textQR}>QR-КОД ДІЯТИМЕ 3 ХВ</Text>
+                                        <Image style={styles.imageQRCode} source={require('./../assets/qrcodeCard.png')} />
+                                        <TouchableOpacity activeOpacity={1}>
+                                            <Image style={styles.qrCodeBtn} source={require('./../assets/qrCodeBtn.png')} />
+                                            <Text style={styles.qrCodeText}>QR-код</Text>
+                                        </TouchableOpacity>
+                                        <TouchableOpacity activeOpacity={1} onPress={() => {
+                                            this.props.setQrCode(false)
+                                            this.props.setBarCode(true)
+                                        }}>
+                                            <Image style={styles.barCodeBtn} source={require('./../assets/barCodeBtn.png')} />
+                                            <Text style={styles.barCodeText}>Штрихкод</Text>
+                                        </TouchableOpacity>
+                                    </View>
+                                }
+                            </View>
+                        }
+                        {this.props.visibleElement2 &&
+                            <View>
+                                {this.props.BarCode &&
+                                    <View>
+                                        <Text style={styles.textQR}>ШТРИХКОД ДІЯТИМЕ 3 ХВ</Text>
+                                        <Image style={styles.imageQRCode} source={require('./../assets/qrcodeCard.png')} />
+                                        <TouchableOpacity activeOpacity={1} onPress={() => {
+                                            this.props.setQrCode(true)
+                                            this.props.setBarCode(false)
+                                        }}>
+                                            <Image style={styles.qrCodeBtn} source={require('./../assets/qrCodeBtnTwo.png')} />
+                                            <Text style={styles.qrCodeText}>QR-код</Text>
+                                        </TouchableOpacity>
+                                        <TouchableOpacity activeOpacity={1}>
+                                            <Image style={styles.barCodeBtn} source={require('./../assets/barCodeBtnTwo.png')} />
+                                            <Text style={styles.barCodeText}>Штрихкод</Text>
+                                        </TouchableOpacity>
+                                    </View>
+                                }
                             </View>
                         }
                     </TouchableOpacity>
