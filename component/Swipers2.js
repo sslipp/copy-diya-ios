@@ -144,8 +144,9 @@ export default class Swipers2 extends Component {
                             <View>
                                 {this.props.BarCode &&
                                     <View>
-                                        <Text style={styles.textQR}>ШТРИХКОД ДІЯТИМЕ 3 ХВ</Text>
-                                        <Image style={styles.imageQRCode} source={require('./../assets/qrcodeCard.png')} />
+                                        <Text style={styles.textBareCodeReplace}></Text>
+                                        <Text style={styles.textBareCode}>ШТРИХКОД ДІЯТИМЕ 3 ХВ</Text>
+                                        <Image style={styles.imageBarCode} source={require('./../assets/barcode.png')} />
                                         <TouchableOpacity activeOpacity={1} onPress={() => {
                                             this.props.setQrCode(true)
                                             this.props.setBarCode(false)
@@ -173,6 +174,28 @@ const styles = StyleSheet.create({
         fontFamily: 'ukraineregular',
         fontSize: moderateScale(12)
     },
+    textBareCodeReplace: {
+        color: '#888',
+        fontSize: 10,
+        fontFamily: 'ukrainelight',
+        marginTop: 28,
+        marginLeft: 37
+    },
+    textBareCode: {
+        color: '#888',
+        fontSize: 10,
+        position: 'absolute',
+        fontFamily: 'ukrainelight',
+        marginTop: 80,
+        marginLeft: 37
+    },
+    imageBarCode: {
+        position: 'absolute',
+        width: 270,
+        height: 80,
+        marginLeft: 23,
+        marginTop: 120
+    },
     barCodeText: {
         position: 'absolute',
         marginTop: 341,
@@ -199,14 +222,14 @@ const styles = StyleSheet.create({
         width: 63,
         height: 63,
         marginLeft: 65,
-        marginTop: 280
+        marginTop: 277
     },
     barCodeBtn: {
         position: 'absolute',
         width: 53,
         height: 53,
         marginLeft: 180,
-        marginTop: 290
+        marginTop: 287
     },
     textQR: {
         color: '#888',
