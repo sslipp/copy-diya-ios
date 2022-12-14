@@ -116,7 +116,18 @@ export default class Swipers3 extends Component {
                 <Animated.View style={[styles.cardBack, backAnimatedStyle, { opacity: this.backOpacity }]}>
                     <TouchableOpacity activeOpacity={1} onPress={() => this.flipCard()} style={[styles.card4, { backgroundColor: this.props.bgCol3 }]} >
                         {this.props.visibleElement3 &&
-                            <Image style={styles.imageQRCode} source={require('./../assets/qrcodeCard.png')} />
+                            <View>
+                                <Text style={styles.textQR}>QR-КОД ДІЯТИМЕ 3 ХВ</Text>
+                                <Image style={styles.imageQRCode} source={require('./../assets/qrcodeCard.png')} />
+                                <TouchableOpacity activeOpacity={1}>
+                                    <Image style={styles.qrCodeBtn} source={require('./../assets/qrCodeBtn.png')} />
+                                    <Text style={styles.qrCodeText}>QR-код</Text>
+                                </TouchableOpacity>
+                                <TouchableOpacity activeOpacity={1}>
+                                    <Image style={styles.barCodeBtn} source={require('./../assets/barCodeBtn.png')} />
+                                    <Text style={styles.barCodeText}>Штрихкод</Text>
+                                </TouchableOpacity>
+                            </View>
                         }
                     </TouchableOpacity>
                 </Animated.View>
@@ -130,12 +141,47 @@ const styles = StyleSheet.create({
         fontFamily: 'ukraineregular',
         fontSize: moderateScale(12)
     },
+    barCodeText: {
+        position: 'absolute',
+        marginTop: 341,
+        marginLeft: 168.5,
+        fontSize: 13,
+        fontFamily: 'ukraineregular'
+    },
+    qrCodeText: {
+        position: 'absolute',
+        marginTop: 340,
+        marginLeft: 71,
+        fontSize: 13,
+        fontFamily: 'ukraineregular'
+    },
     imageQRCode: {
         position: 'absolute',
         width: 300,
         height: 300,
         right: 4,
-        top: 65
+        top: 30
+    },
+    qrCodeBtn: {
+        position: 'absolute',
+        width: 63,
+        height: 63,
+        marginLeft: 65,
+        marginTop: 280
+    },
+    barCodeBtn: {
+        position: 'absolute',
+        width: 53,
+        height: 53,
+        marginLeft: 180,
+        marginTop: 290
+    },
+    textQR: {
+        color: '#888',
+        fontSize: 10,
+        fontFamily: 'ukrainelight',
+        marginTop: 30,
+        marginLeft: 37
     },
     CardLine33: {
         borderBottomColor: '#ceebbf',
